@@ -1,0 +1,2802 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)https://studio.code.org/blockly/js/piskel/index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Piskel</title>
+  <meta name="description" content="">
+  <meta name="author" content="Julian Descottes">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="./piskel-style-packaged-2019-04-25-03-58.css" rel="stylesheet" type="text/css"><style>.layers-canvas { opacity : 0.2}</style></head>
+<body class="tool-pen lowcont-dark-canvas-background" data-current-background-class="lowcont-dark-canvas-background">
+  
+  <!--<style type="text/css">
+  #main-wrapper {
+    margin-top: 40px;
+  }
+
+  .fake-piskelapp-header {
+    position: relative;
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    font-size: 24px;
+    background: black;
+    color: gold;
+    z-index: 100;
+  }
+
+  .piskel-name.piskel-name-saving {
+    color: red;
+  }
+
+  .new-piskel-desktop {
+    position: absolute;
+
+    display: flex;
+    top: 7px;
+    right: 7px;
+
+    height: 26px;
+    width: 26px;
+
+    border-radius: 3px;
+    font-size: 22px;
+    color: black;
+    background: gold;
+    text-decoration: none;
+
+    align-items: center;
+    justify-content: center;
+  }
+</style>
+<div class="fake-piskelapp-header">
+  <a
+    href="index.html"
+    target="_blank"
+    class="new-piskel-desktop button button-primary"
+    title="Create a new sprite"
+    rel="tooltip"
+    data-placement="left"
+    >+</a>
+  <span class="piskel-name"></span>
+</div>-->
+  <!-- the comment below indicates the beginning of markup reused by the editor integrated in piskelapp.com -->
+  <!-- do not delete, do not move :) -->
+  <!--body-main-start-->
+  <div id="main-wrapper" class="main-wrapper">
+    <div class="sticky-section left-sticky-section" id="tool-section">
+  <div class="sticky-section-wrap">
+    <div class="vertical-centerer">
+      <div class="pen-size-container size-picker-container" title="Pen size&lt;br/&gt;from 1 to 4 pixels" rel="tooltip" data-placement="top">
+        <div class="pen-size-option size-picker-option" data-size="1"></div>
+        <div class="pen-size-option size-picker-option" data-size="2"></div>
+        <div class="pen-size-option size-picker-option" data-size="3"></div>
+        <div class="pen-size-option size-picker-option selected" data-size="4"></div>
+      </div>
+      <ul id="tools-container" class="tools-wrapper">
+    <li rel="tooltip" data-placement="right" class="tool-icon icon-tool-pen selected" data-tool-id="tool-pen" title="
+    &lt;div class=&#39;tooltip-container&#39;&gt;
+      &lt;div&gt;Pen tool &lt;span class=&#39;tooltip-shortcut&#39;&gt;(P)&lt;/span&gt;&lt;/div&gt;
+      
+    &lt;/div&gt;
+  "></li>
+  
+    <li rel="tooltip" data-placement="right" class="tool-icon icon-tool-vertical-mirror-pen" data-tool-id="tool-vertical-mirror-pen" title="
+    &lt;div class=&#39;tooltip-container&#39;&gt;
+      &lt;div&gt;Vertical Mirror pen &lt;span class=&#39;tooltip-shortcut&#39;&gt;(V)&lt;/span&gt;&lt;/div&gt;
+      
+    &lt;div class=&#39;tooltip-descriptor&#39;&gt;
+      &lt;span class=&#39;tooltip-descriptor-button&#39;&gt;CTRL&lt;/span&gt;
+      Use horizontal axis
+    &lt;/div&gt;
+  
+    &lt;div class=&#39;tooltip-descriptor&#39;&gt;
+      &lt;span class=&#39;tooltip-descriptor-button&#39;&gt;SHIFT&lt;/span&gt;
+      Use horizontal and vertical axis
+    &lt;/div&gt;
+  
+    &lt;/div&gt;
+  "></li>
+  
+    <li rel="tooltip" data-placement="right" class="tool-icon icon-tool-paint-bucket" data-tool-id="tool-paint-bucket" title="
+    &lt;div class=&#39;tooltip-container&#39;&gt;
+      &lt;div&gt;Paint bucket tool &lt;span class=&#39;tooltip-shortcut&#39;&gt;(B)&lt;/span&gt;&lt;/div&gt;
+      
+    &lt;/div&gt;
+  "></li>
+  
+    <li rel="tooltip" data-placement="right" class="tool-icon icon-tool-colorswap" data-tool-id="tool-colorswap" title="
+    &lt;div class=&#39;tooltip-container&#39;&gt;
+      &lt;div&gt;Paint all pixels of the same color &lt;span class=&#39;tooltip-shortcut&#39;&gt;(A)&lt;/span&gt;&lt;/div&gt;
+      
+    &lt;div class=&#39;tooltip-descriptor&#39;&gt;
+      &lt;span class=&#39;tooltip-descriptor-button&#39;&gt;SHIFT&lt;/span&gt;
+      Apply to all frames
+    &lt;/div&gt;
+  
+    &lt;/div&gt;
+  "></li>
+  
+    <li rel="tooltip" data-placement="right" class="tool-icon icon-tool-eraser" data-tool-id="tool-eraser" title="
+    &lt;div class=&#39;tooltip-container&#39;&gt;
+      &lt;div&gt;Eraser tool &lt;span class=&#39;tooltip-shortcut&#39;&gt;(E)&lt;/span&gt;&lt;/div&gt;
+      
+    &lt;/div&gt;
+  "></li>
+  
+    <li rel="tooltip" data-placement="right" class="tool-icon icon-tool-stroke" data-tool-id="tool-stroke" title="
+    &lt;div class=&#39;tooltip-container&#39;&gt;
+      &lt;div&gt;Stroke tool &lt;span class=&#39;tooltip-shortcut&#39;&gt;(L)&lt;/span&gt;&lt;/div&gt;
+      
+    &lt;div class=&#39;tooltip-descriptor&#39;&gt;
+      &lt;span class=&#39;tooltip-descriptor-button&#39;&gt;SHIFT&lt;/span&gt;
+      Hold shift to draw straight lines
+    &lt;/div&gt;
+  
+    &lt;/div&gt;
+  "></li>
+  
+    <li rel="tooltip" data-placement="right" class="tool-icon icon-tool-rectangle" data-tool-id="tool-rectangle" title="
+    &lt;div class=&#39;tooltip-container&#39;&gt;
+      &lt;div&gt;Rectangle tool &lt;span class=&#39;tooltip-shortcut&#39;&gt;(R)&lt;/span&gt;&lt;/div&gt;
+      
+    &lt;div class=&#39;tooltip-descriptor&#39;&gt;
+      &lt;span class=&#39;tooltip-descriptor-button&#39;&gt;SHIFT&lt;/span&gt;
+      Keep 1 to 1 ratio
+    &lt;/div&gt;
+  
+    &lt;/div&gt;
+  "></li>
+  
+    <li rel="tooltip" data-placement="right" class="tool-icon icon-tool-circle" data-tool-id="tool-circle" title="
+    &lt;div class=&#39;tooltip-container&#39;&gt;
+      &lt;div&gt;Circle tool &lt;span class=&#39;tooltip-shortcut&#39;&gt;(C)&lt;/span&gt;&lt;/div&gt;
+      
+    &lt;div class=&#39;tooltip-descriptor&#39;&gt;
+      &lt;span class=&#39;tooltip-descriptor-button&#39;&gt;SHIFT&lt;/span&gt;
+      Keep 1 to 1 ratio
+    &lt;/div&gt;
+  
+    &lt;/div&gt;
+  "></li>
+  
+    <li rel="tooltip" data-placement="right" class="tool-icon icon-tool-move" data-tool-id="tool-move" title="
+    &lt;div class=&#39;tooltip-container&#39;&gt;
+      &lt;div&gt;Move tool &lt;span class=&#39;tooltip-shortcut&#39;&gt;(M)&lt;/span&gt;&lt;/div&gt;
+      
+    &lt;div class=&#39;tooltip-descriptor&#39;&gt;
+      &lt;span class=&#39;tooltip-descriptor-button&#39;&gt;SHIFT&lt;/span&gt;
+      Apply to all frames
+    &lt;/div&gt;
+  
+    &lt;div class=&#39;tooltip-descriptor&#39;&gt;
+      &lt;span class=&#39;tooltip-descriptor-button&#39;&gt;ALT&lt;/span&gt;
+      Wrap canvas borders
+    &lt;/div&gt;
+  
+    &lt;/div&gt;
+  "></li>
+  
+    <li rel="tooltip" data-placement="right" class="tool-icon icon-tool-shape-select" data-tool-id="tool-shape-select" title="
+    &lt;div class=&#39;tooltip-container&#39;&gt;
+      &lt;div&gt;Shape selection &lt;span class=&#39;tooltip-shortcut&#39;&gt;(Z)&lt;/span&gt;&lt;/div&gt;
+      
+    &lt;div class=&#39;tooltip-descriptor&#39;&gt;
+      Drag the selection to move it. You may switch to other frames.
+    &lt;/div&gt;
+  
+    &lt;div class=&#39;tooltip-descriptor&#39;&gt;
+      &lt;span class=&#39;tooltip-descriptor-button&#39;&gt;CTRL+C&lt;/span&gt;
+      Duplicate the selected area
+    &lt;/div&gt;
+  
+    &lt;div class=&#39;tooltip-descriptor&#39;&gt;
+      &lt;span class=&#39;tooltip-descriptor-button&#39;&gt;SHIFT&lt;/span&gt;
+      Hold to move the content
+    &lt;/div&gt;
+  
+    &lt;/div&gt;
+  "></li>
+  
+    <li rel="tooltip" data-placement="right" class="tool-icon icon-tool-rectangle-select" data-tool-id="tool-rectangle-select" data-original-title="
+    &lt;div class=&#39;tooltip-container&#39;&gt;
+      &lt;div&gt;Rectangle selection &lt;span class=&#39;tooltip-shortcut&#39;&gt;(S)&lt;/span&gt;&lt;/div&gt;
+      
+    &lt;div class=&#39;tooltip-descriptor&#39;&gt;
+      Drag the selection to move it. You may switch to other frames.
+    &lt;/div&gt;
+  
+    &lt;div class=&#39;tooltip-descriptor&#39;&gt;
+      &lt;span class=&#39;tooltip-descriptor-button&#39;&gt;CTRL+C&lt;/span&gt;
+      Duplicate the selected area
+    &lt;/div&gt;
+  
+    &lt;div class=&#39;tooltip-descriptor&#39;&gt;
+      &lt;span class=&#39;tooltip-descriptor-button&#39;&gt;SHIFT&lt;/span&gt;
+      Hold to move the content
+    &lt;/div&gt;
+  
+    &lt;/div&gt;
+  "></li>
+  
+    <li rel="tooltip" data-placement="right" class="tool-icon icon-tool-lasso-select" data-tool-id="tool-lasso-select" title="
+    &lt;div class=&#39;tooltip-container&#39;&gt;
+      &lt;div&gt;Lasso selection &lt;span class=&#39;tooltip-shortcut&#39;&gt;(H)&lt;/span&gt;&lt;/div&gt;
+      
+    &lt;div class=&#39;tooltip-descriptor&#39;&gt;
+      Drag the selection to move it. You may switch to other frames.
+    &lt;/div&gt;
+  
+    &lt;div class=&#39;tooltip-descriptor&#39;&gt;
+      &lt;span class=&#39;tooltip-descriptor-button&#39;&gt;CTRL+C&lt;/span&gt;
+      Duplicate the selected area
+    &lt;/div&gt;
+  
+    &lt;div class=&#39;tooltip-descriptor&#39;&gt;
+      &lt;span class=&#39;tooltip-descriptor-button&#39;&gt;SHIFT&lt;/span&gt;
+      Hold to move the content
+    &lt;/div&gt;
+  
+    &lt;/div&gt;
+  "></li>
+  
+    <li rel="tooltip" data-placement="right" class="tool-icon icon-tool-lighten" data-tool-id="tool-lighten" title="
+    &lt;div class=&#39;tooltip-container&#39;&gt;
+      &lt;div&gt;Lighten &lt;span class=&#39;tooltip-shortcut&#39;&gt;(U)&lt;/span&gt;&lt;/div&gt;
+      
+    &lt;div class=&#39;tooltip-descriptor&#39;&gt;
+      &lt;span class=&#39;tooltip-descriptor-button&#39;&gt;CTRL&lt;/span&gt;
+      Darken
+    &lt;/div&gt;
+  
+    &lt;div class=&#39;tooltip-descriptor&#39;&gt;
+      &lt;span class=&#39;tooltip-descriptor-button&#39;&gt;SHIFT&lt;/span&gt;
+      Apply only once per pixel
+    &lt;/div&gt;
+  
+    &lt;/div&gt;
+  "></li>
+  
+    <li rel="tooltip" data-placement="right" class="tool-icon icon-tool-dithering" data-tool-id="tool-dithering" title="
+    &lt;div class=&#39;tooltip-container&#39;&gt;
+      &lt;div&gt;Dithering tool &lt;span class=&#39;tooltip-shortcut&#39;&gt;(T)&lt;/span&gt;&lt;/div&gt;
+      
+    &lt;/div&gt;
+  "></li>
+  
+    <li rel="tooltip" data-placement="right" class="tool-icon icon-tool-colorpicker" data-tool-id="tool-colorpicker" title="
+    &lt;div class=&#39;tooltip-container&#39;&gt;
+      &lt;div&gt;Color picker &lt;span class=&#39;tooltip-shortcut&#39;&gt;(O)&lt;/span&gt;&lt;/div&gt;
+      
+    &lt;/div&gt;
+  "></li>
+  </ul>
+      <div class="palette-wrapper">
+        <div class="tool-icon tool-color-picker" data-initial-title="Primary - left mouse button" rel="tooltip" data-placement="right" data-original-title="Primary - left mouse button&lt;br/&gt;#000000">
+          <input id="color-picker" class="color" type="text" style="display: none;"><div class="sp-replacer sp-light"><div class="sp-preview"><div class="sp-preview-inner" style="background-color: rgb(0, 0, 0);"></div></div><div class="sp-dd">▼</div></div>
+        </div>
+        <div class="tool-icon tool-color-picker" data-initial-title="Secondary - right mouse button" rel="tooltip" data-placement="right" data-original-title="Secondary - right mouse button&lt;br/&gt;rgba(0, 0, 0, 0)">
+          <input id="secondary-color-picker" class="secondary-color-picker color" type="text" style="display: none;"><div class="sp-replacer sp-light"><div class="sp-preview"><div class="sp-preview-inner" style="background-color: rgba(0, 0, 0, 0);"></div></div><div class="sp-dd">▼</div></div>
+        </div>
+        <div class="swap-colors-button icon-common-swapcolors-arrow-grey" title="Swap colors (X)" rel="tooltip" data-placement="right"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Templates -->
+
+  <!-- Drawing tool icon-button -->
+  <script type="text/template" id="drawingTool-item-template">
+    <li rel="tooltip" data-placement="{{tooltipposition}}" class="{{cssclass}}" data-tool-id="{{toolid}}" title="{{title}}"></li>
+  </script>
+</div>
+
+
+    <div id="column-wrapper" class="column-wrapper" style="top: 0px;">
+      <div class="column left-column">
+        <div id="preview-list-wrapper" class="preview-list-wrapper">
+  <div id="preview-list-scroller" class="preview-list-scroller">
+    <ul class="preview-list ui-sortable" id="preview-list"><li data-tile-number="0" data-tile-hash="3-0" data-tile-action="select" class="preview-tile selected"><div class="canvas-container lowcont-dark-canvas-background" style="margin-top: 0px; margin-left: 38.4px; margin-right: 38.4px;"><div class="canvas-background"></div><canvas width="19.2" height="96" class="tile-view canvas"></canvas></div><button rel="tooltip" data-placement="right" data-tile-number="0" data-tile-action="clone" title="Duplicate this frame" class="tile-overlay duplicate-frame-action icon-frame-duplicate-white"></button><button rel="tooltip" data-placement="right" title="Delete this frame" data-tile-number="0" data-tile-action="delete" class="tile-overlay delete-frame-action icon-frame-recyclebin-white" style="display: none;"></button><div class="tile-overlay dnd-action icon-frame-dragndrop-white" style="display: none;"></div><div class="tile-overlay tile-count">1</div></li><div id="add-frame-action" class="add-frame-action" data-tile-action="newframe"><div class="add-frame-action-icon icon-frame-plus-white"></div><div class="label">Add new frame</div></div></ul>
+  </div>
+  <div class="top-overflow"></div>
+  <div class="bottom-overflow"></div>
+</div>
+      </div>
+
+      <div class="column main-column">
+        <div id="drawing-canvas-container" class="drawing-canvas-container canvas-container">
+          <div class="canvas-background"></div>
+        <canvas width="907" height="621" class="canvas-overlay canvas"></canvas><canvas width="907" height="621" class="drawing-canvas canvas"></canvas><canvas width="907" height="621" class="layers-canvas layers-below-canvas canvas"></canvas><canvas width="907" height="621" class="layers-canvas layers-above-canvas canvas"></canvas><canvas width="907" height="621" class="onion-skin-canvas canvas"></canvas></div>
+      </div>
+
+      <div class="column right-column" style="width: 60px;">
+        <div id="animated-preview-container" class="preview-container">
+  <div class="canvas-container-wrapper minimap-container">
+    <div class="preview-contextual-actions">
+      <div class="preview-drop-down preview-drop-down-disabled">
+        <div class="preview-disable-overlay" rel="tooltip" data-placement="left" data-original-title="No other option available"></div>
+        <div class="preview-contextual-action original-size-button preview-contextual-action-hidden" rel="tooltip" data-placement="left" title="
+    &lt;div class=&#39;tooltip-container&#39;&gt;
+      &lt;div&gt;Original size preview &lt;span class=&#39;tooltip-shortcut&#39;&gt;(alt+1)&lt;/span&gt;&lt;/div&gt;
+      
+    &lt;/div&gt;
+  ">1x</div>
+        <div class="preview-contextual-action best-size-button preview-contextual-action-hidden" rel="tooltip" data-placement="left" title="
+    &lt;div class=&#39;tooltip-container&#39;&gt;
+      &lt;div&gt;Best size preview &lt;span class=&#39;tooltip-shortcut&#39;&gt;(alt+2)&lt;/span&gt;&lt;/div&gt;
+      
+    &lt;/div&gt;
+  ">0x</div>
+        <div class="preview-contextual-action full-size-button size-button-selected" rel="tooltip" data-placement="left" title="
+    &lt;div class=&#39;tooltip-container&#39;&gt;
+      &lt;div&gt;Full size preview &lt;span class=&#39;tooltip-shortcut&#39;&gt;(alt+3)&lt;/span&gt;&lt;/div&gt;
+      
+    &lt;/div&gt;
+  ">Full</div>
+      </div>
+      <div class="preview-contextual-action  open-popup-preview-button  icon-minimap-popup-preview-arrow-white" title="Open preview in popup" rel="tooltip" data-placement="bottom"></div>
+    </div>
+
+    <div id="animated-preview-canvas-container" class="canvas-container" style="height: 200px; width: 40px; margin: 0px 80px;">
+      <div class="canvas-background"></div>
+    <div class="background-image-frame-container" style="background-repeat: no-repeat; background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAADICAYAAACauqPvAAAgAElEQVR4XlXdB7hcVfU28DPSERCpSpEmSEd6LwLSBUFKaCEkISSEBEiAJHQCIYRQpPceqii9I10UKfJHqgiISO+IdLzf+a3xnYdvnuc+987MOXuv8q6y11773M4WW2zWN8ssszRPPfVUs9BCCzVTTz1188033zRff/11M/300zdffPFF8/bbbzczzzxz8+mnnzb/+c9/mllnnbVZYIEFmn/9619Np9NpPvjgg2bOOeds/v3vf9cYr7zySvPDH/6wefPNN5uvvvqqmWuuueqaDz/8sP42Zsb7+OOPmxlmmKH56KOP6jNz+myRRRZpXnjhhaaz5pqr980444zNNNNM03h95zvfaf72t7/VBe+8804RMPvsszdPP/10fbbwwgs3X375ZfPMM8800047bTPVVFM10003XU2KUURh4N13322++93vNt///veLEWOY2D2u9flMM81U43/++ec15nrrrdc89NBD9d7988wzT9P52c/W7cPB448/Xtz5QayLfvSjH9Xnvl922WWb1157rSRBuiZfaqmlmhdffLEmff3115t55523NEDKXqSKkUUXXbT57LPPakxSyvUY80PKCPIbc4g1lrk666yzVh9Jrbvuus2zzz5bA1Pxe++9V0S40MCkYODZZputJEAl77//fvPjH/+4Pl9mmWWaO++8s1lsscVqYK9PPvmk+cEPflCSM6Z7n3/++ZImyWHcdy+//HKz3HLL1fWkanzfYaqz+eabFga/973vNX/5y1+KAzeRhM+pkOTmnnvuwiLp5jtwwK3PHnzwwcLfqquuWoy6t6+vr+4NoZiab775mjnmmKPw+Ne//rXG3XHHHZv77ruvMB5mSBaRnc0226TPBHAHXy7ypUFhk9hh74033mhWXnnlIoRBbb311qV+RJKua1xPpcZBACgg0ngIXX311Usbb731Vo27xBJL1Lg0iDBaIFk0uK4kuPLKK/YZ4Cc/+UkNDpgvvfRSvXfjq6++2iy55JKlcupZbbXVmr322rvZeecdS/3wxTBg16CI9Jv6EU9lrPHyy69sjjjisPqcpfptLhpyDYn//e9/r3nmn3/+Ipw2O1tvvVXfE088UViiAmCFo+eee67UvuKKK9aNsOQ7A//hD39s9t13ZGGNNKjZRAijMq94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&quot;);"></div></div>
+  <div class="minimap-crop-frame" style="display: block; width: 0px; height: 0px; left: 0px; top: 0px;"></div></div>
+  <div>
+    <div rel="tooltip" data-placement="bottom" class="piskel-icon-onion preview-toggle-onion-skin" title="
+    &lt;div class=&#39;tooltip-container&#39;&gt;
+      &lt;div&gt;Toggle onion skin &lt;span class=&#39;tooltip-shortcut&#39;&gt;(alt+O)&lt;/span&gt;&lt;/div&gt;
+      
+    &lt;/div&gt;
+  "></div>
+    <span id="display-fps" class="display-fps">12 FPS</span>
+    <input id="preview-fps" class="range-fps" type="range" min="0" max="24">
+  </div>
+  <div>
+  </div>
+</div>
+        <div class="toolbox-container layers-list-container" style="padding: 0px; visibility: hidden; height: 0px; width: 0px; margin: 0px;">
+  <h3 class="toolbox-title layers-title">Layers
+    <div rel="tooltip" data-placement="left" class="layers-toggle-preview piskel-icon-eye layers-toggle-preview-enabled" title="
+    &lt;div class=&#39;tooltip-container&#39;&gt;
+      &lt;div&gt;Preview all layers &lt;span class=&#39;tooltip-shortcut&#39;&gt;(alt+L)&lt;/span&gt;&lt;/div&gt;
+      
+    &lt;div class=&#39;tooltip-descriptor&#39;&gt;
+      Opacity defined in PREFERENCES
+    &lt;/div&gt;
+  
+    &lt;/div&gt;
+  "></div>
+  </h3>
+  <div class="toolbox-buttons">
+    <button data-action="add" class="button layers-button piskel-icon-plus" rel="tooltip" data-placement="top" title="
+    &lt;div class=&#39;tooltip-container&#39;&gt;
+      &lt;div&gt;Create a layer &lt;span class=&#39;tooltip-shortcut&#39;&gt;&lt;/span&gt;&lt;/div&gt;
+      
+    &lt;div class=&#39;tooltip-descriptor&#39;&gt;
+      &lt;span class=&#39;tooltip-descriptor-button&#39;&gt;SHIFT&lt;/span&gt;
+      Clone current layer
+    &lt;/div&gt;
+  
+    &lt;/div&gt;
+  "></button>
+
+    <button data-action="up" class="button layers-button piskel-icon-arrow-up-fat" title="
+    &lt;div class=&#39;tooltip-container&#39;&gt;
+      &lt;div&gt;Move layer up &lt;span class=&#39;tooltip-shortcut&#39;&gt;&lt;/span&gt;&lt;/div&gt;
+      
+    &lt;div class=&#39;tooltip-descriptor&#39;&gt;
+      &lt;span class=&#39;tooltip-descriptor-button&#39;&gt;SHIFT&lt;/span&gt;
+      Move to the top
+    &lt;/div&gt;
+  
+    &lt;/div&gt;
+  " rel="tooltip" data-placement="top" disabled="disabled"></button>
+
+    <button data-action="down" class="button layers-button piskel-icon-arrow-down-fat" title="
+    &lt;div class=&#39;tooltip-container&#39;&gt;
+      &lt;div&gt;Move layer down &lt;span class=&#39;tooltip-shortcut&#39;&gt;&lt;/span&gt;&lt;/div&gt;
+      
+    &lt;div class=&#39;tooltip-descriptor&#39;&gt;
+      &lt;span class=&#39;tooltip-descriptor-button&#39;&gt;SHIFT&lt;/span&gt;
+      Move to the bottom
+    &lt;/div&gt;
+  
+    &lt;/div&gt;
+  " rel="tooltip" data-placement="top" disabled="disabled"></button>
+
+    <button data-action="edit" class="button layers-button piskel-icon-pencil" title="Edit layer name" rel="tooltip" data-placement="top"></button>
+
+    <button data-action="merge" class="button layers-button piskel-icon-merge" title="Merge with layer below" rel="tooltip" data-placement="top" disabled="disabled"></button>
+
+    <button data-action="delete" class="button layers-button piskel-icon-close" title="Delete selected layer" rel="tooltip" data-placement="top" disabled="disabled"></button>
+
+  </div>
+
+  <ul class="layers-list"><li class="layer-item current-layer-item" data-layer-index="0">
+        <span class="layer-name overflowing-name" data-placement="top" data-original-title="Layer 1">Layer 1</span>
+        <span class="layer-item-opacity" title="Layer opacity" rel="tooltip" data-placement="top">
+          1α
+        </span>
+    </li></ul>
+
+  <script type="text/template" id="layer-item-template">
+    <li class="layer-item {{isselected:current-layer-item}}"
+        data-layer-index="{{layerindex}}">
+        <span class="layer-name" data-placement="top">{{layername}}</span>
+        <span class="layer-item-opacity"
+              title="Layer opacity" rel="tooltip" data-placement="top">
+          {{opacity}}&#945;
+        </span>
+    </li>
+  </script>
+</div>
+
+        <div class="toolbox-container transformations-container">
+  <h3 class="toolbox-title transformations-title">
+    Transform
+    <span class="transformations-show-more-link piskel-icon-plus" title="View more tools" rel="tooltip" data-placement="top"></span>
+  </h3>
+  <ul class="tools-wrapper">
+    <li rel="tooltip" data-placement="left" class="tool-icon icon-tool-flip" data-tool-id="tool-flip" title="
+    &lt;div class=&#39;tooltip-container&#39;&gt;
+      &lt;div&gt;Flip vertically &lt;span class=&#39;tooltip-shortcut&#39;&gt;&lt;/span&gt;&lt;/div&gt;
+      
+    &lt;div class=&#39;tooltip-descriptor&#39;&gt;
+      &lt;span class=&#39;tooltip-descriptor-button&#39;&gt;ALT&lt;/span&gt;
+      Flip horizontally
+    &lt;/div&gt;
+  
+    &lt;div class=&#39;tooltip-descriptor&#39;&gt;
+      &lt;span class=&#39;tooltip-descriptor-button&#39;&gt;SHIFT&lt;/span&gt;
+      Apply to all frames
+    &lt;/div&gt;
+  
+    &lt;/div&gt;
+  "></li>
+  
+    <li rel="tooltip" data-placement="left" class="tool-icon icon-tool-rotate" data-tool-id="tool-rotate" title="
+    &lt;div class=&#39;tooltip-container&#39;&gt;
+      &lt;div&gt;Counter-clockwise rotation &lt;span class=&#39;tooltip-shortcut&#39;&gt;&lt;/span&gt;&lt;/div&gt;
+      
+    &lt;div class=&#39;tooltip-descriptor&#39;&gt;
+      &lt;span class=&#39;tooltip-descriptor-button&#39;&gt;ALT&lt;/span&gt;
+      Clockwise rotation
+    &lt;/div&gt;
+  
+    &lt;div class=&#39;tooltip-descriptor&#39;&gt;
+      &lt;span class=&#39;tooltip-descriptor-button&#39;&gt;SHIFT&lt;/span&gt;
+      Apply to all frames
+    &lt;/div&gt;
+  
+    &lt;/div&gt;
+  "></li>
+  
+    <li rel="tooltip" data-placement="left" class="tool-icon icon-tool-clone" data-tool-id="tool-clone" title="
+    &lt;div class=&#39;tooltip-container&#39;&gt;
+      &lt;div&gt;Clone current layer to all frames &lt;span class=&#39;tooltip-shortcut&#39;&gt;&lt;/span&gt;&lt;/div&gt;
+      
+    &lt;/div&gt;
+  " style="padding: 0px; visibility: hidden; height: 0px; width: 0px; margin: 0px;"></li>
+  
+    <li rel="tooltip" data-placement="left" class="tool-icon icon-tool-center" data-tool-id="tool-center" title="
+    &lt;div class=&#39;tooltip-container&#39;&gt;
+      &lt;div&gt;Align image to the center &lt;span class=&#39;tooltip-shortcut&#39;&gt;&lt;/span&gt;&lt;/div&gt;
+      
+    &lt;div class=&#39;tooltip-descriptor&#39;&gt;
+      &lt;span class=&#39;tooltip-descriptor-button&#39;&gt;SHIFT&lt;/span&gt;
+      Apply to all frames
+    &lt;/div&gt;
+  
+    &lt;/div&gt;
+  "></li>
+  
+    <li rel="tooltip" data-placement="left" class="tool-icon icon-tool-crop" data-tool-id="tool-crop" title="
+    &lt;div class=&#39;tooltip-container&#39;&gt;
+      &lt;div&gt;Crop the sprite &lt;span class=&#39;tooltip-shortcut&#39;&gt;&lt;/span&gt;&lt;/div&gt;
+      
+    &lt;div class=&#39;tooltip-descriptor&#39;&gt;
+      Crop to fit the content or the selection. Applies to all frames and layers!
+    &lt;/div&gt;
+  
+    &lt;/div&gt;
+  "></li>
+  </ul>
+</div>
+        <div class="toolbox-container palettes-list-container">
+  <h3 class="toolbox-title palettes-title">Palettes</h3>
+  <div class="toolbox-buttons">
+    <button class="button palettes-list-button create-palette-button piskel-icon-plus" data-action="add" title="Create a new palette" rel="tooltip" data-placement="top"></button>
+    <select class="button palettes-list-select"><option value="__current-colors">Current colors</option></select>
+    <button class="button palettes-list-button edit-palette-button  piskel-icon-pencil" data-action="edit" title="Manage this palette" rel="tooltip" data-placement="top"></button>
+  </div>
+  <div class="palettes-list-colors tiny">
+    <div class="palettes-list-color" data-color="#0c0c0c" data-color-index="1" title="#0C0C0C">
+      <div data-color="#0c0c0c" style="background:#0c0c0c"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#0e0e0c" data-color-index="2" title="#0E0E0C">
+      <div data-color="#0e0e0c" style="background:#0e0e0c"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#0d0d0d" data-color-index="3" title="#0D0D0D">
+      <div data-color="#0d0d0d" style="background:#0d0d0d"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#0f0f0d" data-color-index="4" title="#0F0F0D">
+      <div data-color="#0f0f0d" style="background:#0f0f0d"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#10100e" data-color-index="5" title="#10100E">
+      <div data-color="#10100e" style="background:#10100e"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#11110f" data-color-index="6" title="#11110F">
+      <div data-color="#11110f" style="background:#11110f"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#101010" data-color-index="7" title="#101010">
+      <div data-color="#101010" style="background:#101010"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#121210" data-color-index="8" title="#121210">
+      <div data-color="#121210" style="background:#121210"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#111111" data-color-index="9" title="#111111">
+      <div data-color="#111111" style="background:#111111"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#131311" data-color-index="10" title="#131311">
+      <div data-color="#131311" style="background:#131311"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#141412" data-color-index="11" title="#141412">
+      <div data-color="#141412" style="background:#141412"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#131313" data-color-index="12" title="#131313">
+      <div data-color="#131313" style="background:#131313"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#151513" data-color-index="13" title="#151513">
+      <div data-color="#151513" style="background:#151513"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#161614" data-color-index="14" title="#161614">
+      <div data-color="#161614" style="background:#161614"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#171715" data-color-index="15" title="#171715">
+      <div data-color="#171715" style="background:#171715"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#161616" data-color-index="16" title="#161616">
+      <div data-color="#161616" style="background:#161616"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#181816" data-color-index="17" title="#181816">
+      <div data-color="#181816" style="background:#181816"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#171717" data-color-index="18" title="#171717">
+      <div data-color="#171717" style="background:#171717"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#191917" data-color-index="19" title="#191917">
+      <div data-color="#191917" style="background:#191917"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#181818" data-color-index="20" title="#181818">
+      <div data-color="#181818" style="background:#181818"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#1a1a18" data-color-index="21" title="#1A1A18">
+      <div data-color="#1a1a18" style="background:#1a1a18"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#191919" data-color-index="22" title="#191919">
+      <div data-color="#191919" style="background:#191919"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#e6e6e6" data-color-index="23" title="#E6E6E6">
+      <div data-color="#e6e6e6" style="background:#e6e6e6"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#e7e7e7" data-color-index="24" title="#E7E7E7">
+      <div data-color="#e7e7e7" style="background:#e7e7e7"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#ebebeb" data-color-index="25" title="#EBEBEB">
+      <div data-color="#ebebeb" style="background:#ebebeb"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#ececec" data-color-index="26" title="#ECECEC">
+      <div data-color="#ececec" style="background:#ececec"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#ececee" data-color-index="27" title="#ECECEE">
+      <div data-color="#ececee" style="background:#ececee"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#ededef" data-color-index="28" title="#EDEDEF">
+      <div data-color="#ededef" style="background:#ededef"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#efefef" data-color-index="29" title="#EFEFEF">
+      <div data-color="#efefef" style="background:#efefef"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#f0f0f0" data-color-index="30" title="#F0F0F0">
+      <div data-color="#f0f0f0" style="background:#f0f0f0"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#efeff1" data-color-index="31" title="#EFEFF1">
+      <div data-color="#efeff1" style="background:#efeff1"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#f2f2f2" data-color-index="32" title="#F2F2F2">
+      <div data-color="#f2f2f2" style="background:#f2f2f2"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#f2f2f4" data-color-index="33" title="#F2F2F4">
+      <div data-color="#f2f2f4" style="background:#f2f2f4"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#f3f3f5" data-color-index="34" title="#F3F3F5">
+      <div data-color="#f3f3f5" style="background:#f3f3f5"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#f5f5f5" data-color-index="35" title="#F5F5F5">
+      <div data-color="#f5f5f5" style="background:#f5f5f5"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#f4f4f6" data-color-index="36" title="#F4F4F6">
+      <div data-color="#f4f4f6" style="background:#f4f4f6"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#f6f6f6" data-color-index="37" title="#F6F6F6">
+      <div data-color="#f6f6f6" style="background:#f6f6f6"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#f7f7f7" data-color-index="38" title="#F7F7F7">
+      <div data-color="#f7f7f7" style="background:#f7f7f7"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#f6f6f8" data-color-index="39" title="#F6F6F8">
+      <div data-color="#f6f6f8" style="background:#f6f6f8"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#f7f7f9" data-color-index="40" title="#F7F7F9">
+      <div data-color="#f7f7f9" style="background:#f7f7f9"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#f9f9f9" data-color-index="41" title="#F9F9F9">
+      <div data-color="#f9f9f9" style="background:#f9f9f9"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#fafafa" data-color-index="42" title="#FAFAFA">
+      <div data-color="#fafafa" style="background:#fafafa"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#f9f9fb" data-color-index="43" title="#F9F9FB">
+      <div data-color="#f9f9fb" style="background:#f9f9fb"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#fafafc" data-color-index="44" title="#FAFAFC">
+      <div data-color="#fafafc" style="background:#fafafc"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#fbfbfd" data-color-index="45" title="#FBFBFD">
+      <div data-color="#fbfbfd" style="background:#fbfbfd"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#fdfdfd" data-color-index="46" title="#FDFDFD">
+      <div data-color="#fdfdfd" style="background:#fdfdfd"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#fcfcfe" data-color-index="47" title="#FCFCFE">
+      <div data-color="#fcfcfe" style="background:#fcfcfe"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#fefefe" data-color-index="48" title="#FEFEFE">
+      <div data-color="#fefefe" style="background:#fefefe"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#fdfdff" data-color-index="49" title="#FDFDFF">
+      <div data-color="#fdfdff" style="background:#fdfdff"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#fefeff" data-color-index="50" title="#FEFEFF">
+      <div data-color="#fefeff" style="background:#fefeff"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#ffffff" data-color-index="51" title="#FFFFFF">
+      <div data-color="#ffffff" style="background:#ffffff"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#1c1c1c" data-color-index="52" title="#1C1C1C">
+      <div data-color="#1c1c1c" style="background:#1c1c1c"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#1d1d1d" data-color-index="53" title="#1D1D1D">
+      <div data-color="#1d1d1d" style="background:#1d1d1d"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#1e1e1e" data-color-index="54" title="#1E1E1E">
+      <div data-color="#1e1e1e" style="background:#1e1e1e"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#212121" data-color-index="55" title="#212121">
+      <div data-color="#212121" style="background:#212121"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#232323" data-color-index="56" title="#232323">
+      <div data-color="#232323" style="background:#232323"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#242424" data-color-index="57" title="#242424">
+      <div data-color="#242424" style="background:#242424"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#262626" data-color-index="58" title="#262626">
+      <div data-color="#262626" style="background:#262626"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#272727" data-color-index="59" title="#272727">
+      <div data-color="#272727" style="background:#272727"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#282828" data-color-index="60" title="#282828">
+      <div data-color="#282828" style="background:#282828"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#292929" data-color-index="61" title="#292929">
+      <div data-color="#292929" style="background:#292929"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#2b2b2b" data-color-index="62" title="#2B2B2B">
+      <div data-color="#2b2b2b" style="background:#2b2b2b"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#2c2c2c" data-color-index="63" title="#2C2C2C">
+      <div data-color="#2c2c2c" style="background:#2c2c2c"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#2f2f2f" data-color-index="64" title="#2F2F2F">
+      <div data-color="#2f2f2f" style="background:#2f2f2f"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#313131" data-color-index="65" title="#313131">
+      <div data-color="#313131" style="background:#313131"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#323232" data-color-index="66" title="#323232">
+      <div data-color="#323232" style="background:#323232"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#343434" data-color-index="67" title="#343434">
+      <div data-color="#343434" style="background:#343434"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#353535" data-color-index="68" title="#353535">
+      <div data-color="#353535" style="background:#353535"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#393939" data-color-index="69" title="#393939">
+      <div data-color="#393939" style="background:#393939"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#3a3a3a" data-color-index="70" title="#3A3A3A">
+      <div data-color="#3a3a3a" style="background:#3a3a3a"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#3c3c3c" data-color-index="71" title="#3C3C3C">
+      <div data-color="#3c3c3c" style="background:#3c3c3c"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#3d3d3d" data-color-index="72" title="#3D3D3D">
+      <div data-color="#3d3d3d" style="background:#3d3d3d"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#3e3e3e" data-color-index="73" title="#3E3E3E">
+      <div data-color="#3e3e3e" style="background:#3e3e3e"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#3f3f3f" data-color-index="74" title="#3F3F3F">
+      <div data-color="#3f3f3f" style="background:#3f3f3f"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#404040" data-color-index="75" title="#404040">
+      <div data-color="#404040" style="background:#404040"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#424242" data-color-index="76" title="#424242">
+      <div data-color="#424242" style="background:#424242"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#434343" data-color-index="77" title="#434343">
+      <div data-color="#434343" style="background:#434343"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#454545" data-color-index="78" title="#454545">
+      <div data-color="#454545" style="background:#454545"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#464646" data-color-index="79" title="#464646">
+      <div data-color="#464646" style="background:#464646"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#474747" data-color-index="80" title="#474747">
+      <div data-color="#474747" style="background:#474747"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#494949" data-color-index="81" title="#494949">
+      <div data-color="#494949" style="background:#494949"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#4a4a4a" data-color-index="82" title="#4A4A4A">
+      <div data-color="#4a4a4a" style="background:#4a4a4a"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#4b4b4b" data-color-index="83" title="#4B4B4B">
+      <div data-color="#4b4b4b" style="background:#4b4b4b"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#4c4c4c" data-color-index="84" title="#4C4C4C">
+      <div data-color="#4c4c4c" style="background:#4c4c4c"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#4d4d4d" data-color-index="85" title="#4D4D4D">
+      <div data-color="#4d4d4d" style="background:#4d4d4d"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#4f4f4f" data-color-index="86" title="#4F4F4F">
+      <div data-color="#4f4f4f" style="background:#4f4f4f"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#505050" data-color-index="87" title="#505050">
+      <div data-color="#505050" style="background:#505050"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#515151" data-color-index="88" title="#515151">
+      <div data-color="#515151" style="background:#515151"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#535353" data-color-index="89" title="#535353">
+      <div data-color="#535353" style="background:#535353"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#565656" data-color-index="90" title="#565656">
+      <div data-color="#565656" style="background:#565656"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#575757" data-color-index="91" title="#575757">
+      <div data-color="#575757" style="background:#575757"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#595959" data-color-index="92" title="#595959">
+      <div data-color="#595959" style="background:#595959"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#5f5f5f" data-color-index="93" title="#5F5F5F">
+      <div data-color="#5f5f5f" style="background:#5f5f5f"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#616161" data-color-index="94" title="#616161">
+      <div data-color="#616161" style="background:#616161"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#626262" data-color-index="95" title="#626262">
+      <div data-color="#626262" style="background:#626262"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#646464" data-color-index="96" title="#646464">
+      <div data-color="#646464" style="background:#646464"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#656565" data-color-index="97" title="#656565">
+      <div data-color="#656565" style="background:#656565"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#b8b8b8" data-color-index="98" title="#B8B8B8">
+      <div data-color="#b8b8b8" style="background:#b8b8b8"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#c4c4c4" data-color-index="99" title="#C4C4C4">
+      <div data-color="#c4c4c4" style="background:#c4c4c4"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#c6c6c6" data-color-index="100" title="#C6C6C6">
+      <div data-color="#c6c6c6" style="background:#c6c6c6"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#c7c7c7" data-color-index="101" title="#C7C7C7">
+      <div data-color="#c7c7c7" style="background:#c7c7c7"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#c8c8c8" data-color-index="102" title="#C8C8C8">
+      <div data-color="#c8c8c8" style="background:#c8c8c8"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#cacaca" data-color-index="103" title="#CACACA">
+      <div data-color="#cacaca" style="background:#cacaca"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#cecece" data-color-index="104" title="#CECECE">
+      <div data-color="#cecece" style="background:#cecece"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#d4d4d4" data-color-index="105" title="#D4D4D4">
+      <div data-color="#d4d4d4" style="background:#d4d4d4"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#d5d5d5" data-color-index="106" title="#D5D5D5">
+      <div data-color="#d5d5d5" style="background:#d5d5d5"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#d6d6d6" data-color-index="107" title="#D6D6D6">
+      <div data-color="#d6d6d6" style="background:#d6d6d6"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#d9d9d9" data-color-index="108" title="#D9D9D9">
+      <div data-color="#d9d9d9" style="background:#d9d9d9"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#dbdbdb" data-color-index="109" title="#DBDBDB">
+      <div data-color="#dbdbdb" style="background:#dbdbdb"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#dedede" data-color-index="110" title="#DEDEDE">
+      <div data-color="#dedede" style="background:#dedede"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#dfdfdf" data-color-index="111" title="#DFDFDF">
+      <div data-color="#dfdfdf" style="background:#dfdfdf"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#e0e0e0" data-color-index="112" title="#E0E0E0">
+      <div data-color="#e0e0e0" style="background:#e0e0e0"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#e1e1e1" data-color-index="113" title="#E1E1E1">
+      <div data-color="#e1e1e1" style="background:#e1e1e1"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#e2e2e2" data-color-index="114" title="#E2E2E2">
+      <div data-color="#e2e2e2" style="background:#e2e2e2"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#e4e4e4" data-color-index="115" title="#E4E4E4">
+      <div data-color="#e4e4e4" style="background:#e4e4e4"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#e5e5e5" data-color-index="116" title="#E5E5E5">
+      <div data-color="#e5e5e5" style="background:#e5e5e5"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#1b1b19" data-color-index="117" title="#1B1B19">
+      <div data-color="#1b1b19" style="background:#1b1b19"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#1c1c1a" data-color-index="118" title="#1C1C1A">
+      <div data-color="#1c1c1a" style="background:#1c1c1a"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#1d1d1b" data-color-index="119" title="#1D1D1B">
+      <div data-color="#1d1d1b" style="background:#1d1d1b"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#1e1e1c" data-color-index="120" title="#1E1E1C">
+      <div data-color="#1e1e1c" style="background:#1e1e1c"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#1f1f1d" data-color-index="121" title="#1F1F1D">
+      <div data-color="#1f1f1d" style="background:#1f1f1d"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#20201e" data-color-index="122" title="#20201E">
+      <div data-color="#20201e" style="background:#20201e"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#21211f" data-color-index="123" title="#21211F">
+      <div data-color="#21211f" style="background:#21211f"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#222220" data-color-index="124" title="#222220">
+      <div data-color="#222220" style="background:#222220"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#232321" data-color-index="125" title="#232321">
+      <div data-color="#232321" style="background:#232321"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#242422" data-color-index="126" title="#242422">
+      <div data-color="#242422" style="background:#242422"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#252523" data-color-index="127" title="#252523">
+      <div data-color="#252523" style="background:#252523"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#262624" data-color-index="128" title="#262624">
+      <div data-color="#262624" style="background:#262624"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#272725" data-color-index="129" title="#272725">
+      <div data-color="#272725" style="background:#272725"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#282826" data-color-index="130" title="#282826">
+      <div data-color="#282826" style="background:#282826"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#292927" data-color-index="131" title="#292927">
+      <div data-color="#292927" style="background:#292927"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#2a2a28" data-color-index="132" title="#2A2A28">
+      <div data-color="#2a2a28" style="background:#2a2a28"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#2b2b29" data-color-index="133" title="#2B2B29">
+      <div data-color="#2b2b29" style="background:#2b2b29"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#2c2c2a" data-color-index="134" title="#2C2C2A">
+      <div data-color="#2c2c2a" style="background:#2c2c2a"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#2d2d2b" data-color-index="135" title="#2D2D2B">
+      <div data-color="#2d2d2b" style="background:#2d2d2b"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#2e2e2c" data-color-index="136" title="#2E2E2C">
+      <div data-color="#2e2e2c" style="background:#2e2e2c"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#2f2f2d" data-color-index="137" title="#2F2F2D">
+      <div data-color="#2f2f2d" style="background:#2f2f2d"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#30302e" data-color-index="138" title="#30302E">
+      <div data-color="#30302e" style="background:#30302e"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#31312f" data-color-index="139" title="#31312F">
+      <div data-color="#31312f" style="background:#31312f"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#323230" data-color-index="140" title="#323230">
+      <div data-color="#323230" style="background:#323230"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#333331" data-color-index="141" title="#333331">
+      <div data-color="#333331" style="background:#333331"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#343432" data-color-index="142" title="#343432">
+      <div data-color="#343432" style="background:#343432"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#353533" data-color-index="143" title="#353533">
+      <div data-color="#353533" style="background:#353533"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#363634" data-color-index="144" title="#363634">
+      <div data-color="#363634" style="background:#363634"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#373735" data-color-index="145" title="#373735">
+      <div data-color="#373735" style="background:#373735"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#383836" data-color-index="146" title="#383836">
+      <div data-color="#383836" style="background:#383836"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#393937" data-color-index="147" title="#393937">
+      <div data-color="#393937" style="background:#393937"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#3a3a38" data-color-index="148" title="#3A3A38">
+      <div data-color="#3a3a38" style="background:#3a3a38"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#3b3b39" data-color-index="149" title="#3B3B39">
+      <div data-color="#3b3b39" style="background:#3b3b39"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#3c3c3a" data-color-index="150" title="#3C3C3A">
+      <div data-color="#3c3c3a" style="background:#3c3c3a"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#3d3d3b" data-color-index="151" title="#3D3D3B">
+      <div data-color="#3d3d3b" style="background:#3d3d3b"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#3e3e3c" data-color-index="152" title="#3E3E3C">
+      <div data-color="#3e3e3c" style="background:#3e3e3c"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#3f3f3d" data-color-index="153" title="#3F3F3D">
+      <div data-color="#3f3f3d" style="background:#3f3f3d"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#40403e" data-color-index="154" title="#40403E">
+      <div data-color="#40403e" style="background:#40403e"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#41413f" data-color-index="155" title="#41413F">
+      <div data-color="#41413f" style="background:#41413f"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#424240" data-color-index="156" title="#424240">
+      <div data-color="#424240" style="background:#424240"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#434341" data-color-index="157" title="#434341">
+      <div data-color="#434341" style="background:#434341"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#444442" data-color-index="158" title="#444442">
+      <div data-color="#444442" style="background:#444442"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#454543" data-color-index="159" title="#454543">
+      <div data-color="#454543" style="background:#454543"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#464644" data-color-index="160" title="#464644">
+      <div data-color="#464644" style="background:#464644"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#474745" data-color-index="161" title="#474745">
+      <div data-color="#474745" style="background:#474745"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#484846" data-color-index="162" title="#484846">
+      <div data-color="#484846" style="background:#484846"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#494947" data-color-index="163" title="#494947">
+      <div data-color="#494947" style="background:#494947"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#4a4a48" data-color-index="164" title="#4A4A48">
+      <div data-color="#4a4a48" style="background:#4a4a48"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#4b4b49" data-color-index="165" title="#4B4B49">
+      <div data-color="#4b4b49" style="background:#4b4b49"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#4c4c4a" data-color-index="166" title="#4C4C4A">
+      <div data-color="#4c4c4a" style="background:#4c4c4a"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#4d4d4b" data-color-index="167" title="#4D4D4B">
+      <div data-color="#4d4d4b" style="background:#4d4d4b"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#4e4e4c" data-color-index="168" title="#4E4E4C">
+      <div data-color="#4e4e4c" style="background:#4e4e4c"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#4f4f4d" data-color-index="169" title="#4F4F4D">
+      <div data-color="#4f4f4d" style="background:#4f4f4d"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#50504e" data-color-index="170" title="#50504E">
+      <div data-color="#50504e" style="background:#50504e"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#51514f" data-color-index="171" title="#51514F">
+      <div data-color="#51514f" style="background:#51514f"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#525250" data-color-index="172" title="#525250">
+      <div data-color="#525250" style="background:#525250"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#535351" data-color-index="173" title="#535351">
+      <div data-color="#535351" style="background:#535351"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#545452" data-color-index="174" title="#545452">
+      <div data-color="#545452" style="background:#545452"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#555553" data-color-index="175" title="#555553">
+      <div data-color="#555553" style="background:#555553"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#565654" data-color-index="176" title="#565654">
+      <div data-color="#565654" style="background:#565654"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#575755" data-color-index="177" title="#575755">
+      <div data-color="#575755" style="background:#575755"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#585856" data-color-index="178" title="#585856">
+      <div data-color="#585856" style="background:#585856"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#595957" data-color-index="179" title="#595957">
+      <div data-color="#595957" style="background:#595957"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#5a5a58" data-color-index="180" title="#5A5A58">
+      <div data-color="#5a5a58" style="background:#5a5a58"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#5b5b59" data-color-index="181" title="#5B5B59">
+      <div data-color="#5b5b59" style="background:#5b5b59"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#5c5c5a" data-color-index="182" title="#5C5C5A">
+      <div data-color="#5c5c5a" style="background:#5c5c5a"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#5d5d5b" data-color-index="183" title="#5D5D5B">
+      <div data-color="#5d5d5b" style="background:#5d5d5b"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#5e5e5c" data-color-index="184" title="#5E5E5C">
+      <div data-color="#5e5e5c" style="background:#5e5e5c"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#5f5f5d" data-color-index="185" title="#5F5F5D">
+      <div data-color="#5f5f5d" style="background:#5f5f5d"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#60605e" data-color-index="186" title="#60605E">
+      <div data-color="#60605e" style="background:#60605e"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#61615f" data-color-index="187" title="#61615F">
+      <div data-color="#61615f" style="background:#61615f"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#626260" data-color-index="188" title="#626260">
+      <div data-color="#626260" style="background:#626260"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#636361" data-color-index="189" title="#636361">
+      <div data-color="#636361" style="background:#636361"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#646462" data-color-index="190" title="#646462">
+      <div data-color="#646462" style="background:#646462"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#656563" data-color-index="191" title="#656563">
+      <div data-color="#656563" style="background:#656563"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#666664" data-color-index="192" title="#666664">
+      <div data-color="#666664" style="background:#666664"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#676765" data-color-index="193" title="#676765">
+      <div data-color="#676765" style="background:#676765"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#686866" data-color-index="194" title="#686866">
+      <div data-color="#686866" style="background:#686866"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#696967" data-color-index="195" title="#696967">
+      <div data-color="#696967" style="background:#696967"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#6a6a68" data-color-index="196" title="#6A6A68">
+      <div data-color="#6a6a68" style="background:#6a6a68"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#6b6b69" data-color-index="197" title="#6B6B69">
+      <div data-color="#6b6b69" style="background:#6b6b69"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#6c6c6a" data-color-index="198" title="#6C6C6A">
+      <div data-color="#6c6c6a" style="background:#6c6c6a"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#6d6d6b" data-color-index="199" title="#6D6D6B">
+      <div data-color="#6d6d6b" style="background:#6d6d6b"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#6e6e6c" data-color-index="200" title="#6E6E6C">
+      <div data-color="#6e6e6c" style="background:#6e6e6c"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#6f6f6d" data-color-index="201" title="#6F6F6D">
+      <div data-color="#6f6f6d" style="background:#6f6f6d"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#70706e" data-color-index="202" title="#70706E">
+      <div data-color="#70706e" style="background:#70706e"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#71716f" data-color-index="203" title="#71716F">
+      <div data-color="#71716f" style="background:#71716f"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#727270" data-color-index="204" title="#727270">
+      <div data-color="#727270" style="background:#727270"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#737371" data-color-index="205" title="#737371">
+      <div data-color="#737371" style="background:#737371"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#747472" data-color-index="206" title="#747472">
+      <div data-color="#747472" style="background:#747472"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#757573" data-color-index="207" title="#757573">
+      <div data-color="#757573" style="background:#757573"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#767674" data-color-index="208" title="#767674">
+      <div data-color="#767674" style="background:#767674"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#777775" data-color-index="209" title="#777775">
+      <div data-color="#777775" style="background:#777775"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#787876" data-color-index="210" title="#787876">
+      <div data-color="#787876" style="background:#787876"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#797977" data-color-index="211" title="#797977">
+      <div data-color="#797977" style="background:#797977"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#7a7a78" data-color-index="212" title="#7A7A78">
+      <div data-color="#7a7a78" style="background:#7a7a78"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#7b7b79" data-color-index="213" title="#7B7B79">
+      <div data-color="#7b7b79" style="background:#7b7b79"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#7c7c7a" data-color-index="214" title="#7C7C7A">
+      <div data-color="#7c7c7a" style="background:#7c7c7a"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#7d7d7b" data-color-index="215" title="#7D7D7B">
+      <div data-color="#7d7d7b" style="background:#7d7d7b"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#7f7f7d" data-color-index="216" title="#7F7F7D">
+      <div data-color="#7f7f7d" style="background:#7f7f7d"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#80807e" data-color-index="217" title="#80807E">
+      <div data-color="#80807e" style="background:#80807e"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#81817f" data-color-index="218" title="#81817F">
+      <div data-color="#81817f" style="background:#81817f"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#828280" data-color-index="219" title="#828280">
+      <div data-color="#828280" style="background:#828280"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#848482" data-color-index="220" title="#848482">
+      <div data-color="#848482" style="background:#848482"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#858583" data-color-index="221" title="#858583">
+      <div data-color="#858583" style="background:#858583"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#868684" data-color-index="222" title="#868684">
+      <div data-color="#868684" style="background:#868684"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#888886" data-color-index="223" title="#888886">
+      <div data-color="#888886" style="background:#888886"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#8b8b89" data-color-index="224" title="#8B8B89">
+      <div data-color="#8b8b89" style="background:#8b8b89"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#8c8c8a" data-color-index="225" title="#8C8C8A">
+      <div data-color="#8c8c8a" style="background:#8c8c8a"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#8e8e8c" data-color-index="226" title="#8E8E8C">
+      <div data-color="#8e8e8c" style="background:#8e8e8c"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#91918f" data-color-index="227" title="#91918F">
+      <div data-color="#91918f" style="background:#91918f"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#939391" data-color-index="228" title="#939391">
+      <div data-color="#939391" style="background:#939391"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#9b9b99" data-color-index="229" title="#9B9B99">
+      <div data-color="#9b9b99" style="background:#9b9b99"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#9c9c9a" data-color-index="230" title="#9C9C9A">
+      <div data-color="#9c9c9a" style="background:#9c9c9a"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#a9a9a7" data-color-index="231" title="#A9A9A7">
+      <div data-color="#a9a9a7" style="background:#a9a9a7"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#b5b5b3" data-color-index="232" title="#B5B5B3">
+      <div data-color="#b5b5b3" style="background:#b5b5b3"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#babab8" data-color-index="233" title="#BABAB8">
+      <div data-color="#babab8" style="background:#babab8"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#c6c6c4" data-color-index="234" title="#C6C6C4">
+      <div data-color="#c6c6c4" style="background:#c6c6c4"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#c7c7c5" data-color-index="235" title="#C7C7C5">
+      <div data-color="#c7c7c5" style="background:#c7c7c5"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#2d2e29" data-color-index="236" title="#2D2E29">
+      <div data-color="#2d2e29" style="background:#2d2e29"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#2f302b" data-color-index="237" title="#2F302B">
+      <div data-color="#2f302b" style="background:#2f302b"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#353631" data-color-index="238" title="#353631">
+      <div data-color="#353631" style="background:#353631"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#393a35" data-color-index="239" title="#393A35">
+      <div data-color="#393a35" style="background:#393a35"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#42433e" data-color-index="240" title="#42433E">
+      <div data-color="#42433e" style="background:#42433e"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#444540" data-color-index="241" title="#444540">
+      <div data-color="#444540" style="background:#444540"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#474843" data-color-index="242" title="#474843">
+      <div data-color="#474843" style="background:#474843"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#484944" data-color-index="243" title="#484944">
+      <div data-color="#484944" style="background:#484944"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#4a4b46" data-color-index="244" title="#4A4B46">
+      <div data-color="#4a4b46" style="background:#4a4b46"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#4b4c47" data-color-index="245" title="#4B4C47">
+      <div data-color="#4b4c47" style="background:#4b4c47"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#4c4d48" data-color-index="246" title="#4C4D48">
+      <div data-color="#4c4d48" style="background:#4c4d48"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#545550" data-color-index="247" title="#545550">
+      <div data-color="#545550" style="background:#545550"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#565752" data-color-index="248" title="#565752">
+      <div data-color="#565752" style="background:#565752"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#5a5b56" data-color-index="249" title="#5A5B56">
+      <div data-color="#5a5b56" style="background:#5a5b56"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#242520" data-color-index="250" title="#242520">
+      <div data-color="#242520" style="background:#242520"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#262722" data-color-index="251" title="#262722">
+      <div data-color="#262722" style="background:#262722"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#2e2f2a" data-color-index="252" title="#2E2F2A">
+      <div data-color="#2e2f2a" style="background:#2e2f2a"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#363732" data-color-index="253" title="#363732">
+      <div data-color="#363732" style="background:#363732"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#3c3d38" data-color-index="254" title="#3C3D38">
+      <div data-color="#3c3d38" style="background:#3c3d38"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#4d4e49" data-color-index="255" title="#4D4E49">
+      <div data-color="#4d4e49" style="background:#4d4e49"></div>
+    </div>
+  
+    <div class="palettes-list-color" data-color="#41423d" data-color-index="256" title="#41423D">
+      <div data-color="#41423d" style="background:#41423d"></div>
+    </div>
+  </div>
+  <script type="text/template" id="palette-color-template">
+    <div class="palettes-list-color"
+         data-color="{{color}}"
+         data-color-index="{{index}}"
+         title="{{title}}">
+      <div data-color="{{color}}" style="background:{{color}}"></div>
+    </div>
+  </script>
+
+  <script type="text/template" id="palettes-list-no-colors-partial">
+    <div class="palettes-list-no-colors">
+      No color in the selected palette ...
+    </div>
+  </script>
+
+</div>
+
+
+
+        <div class="pull-bottom cursor-coordinates">[200x1000] <div class="drawing-zoom">x1.00</div></div>
+      </div>
+    </div>
+
+    <div id="application-action-section" data-pskl-controller="settings" class="sticky-section right-sticky-section">
+      <div class="sticky-section-wrap">
+        <div class="vertical-centerer">
+  <div data-setting="user" class="tool-icon icon-settings-gear-white" title="&lt;span class=&#39;highlight&#39;&gt;PREFERENCES&lt;/span&gt;&lt;/br&gt;" rel="tooltip" data-placement="left">
+  </div>
+
+  <div data-setting="resize" class="tool-icon  icon-settings-resize-white" title="&lt;span class=&#39;highlight&#39;&gt;RESIZE&lt;/span&gt;&lt;/br&gt;Resize the drawing area" rel="tooltip" data-placement="left">
+  </div>
+
+  <div data-setting="save" class="tool-icon  icon-settings-save-white" title="&lt;span class=&#39;highlight&#39;&gt;SAVE&lt;/span&gt;&lt;/br&gt;Save to your gallery, save locally&lt;br/&gt;or export as a file" rel="tooltip" data-placement="left">
+  </div>
+
+  <div data-setting="export" class="tool-icon  icon-settings-export-white" title="&lt;span class=&#39;highlight&#39;&gt;EXPORT&lt;/span&gt;&lt;/br&gt;Export as Image, as Spritesheet&lt;br/&gt;or as Animated GIF" rel="tooltip" data-placement="left">
+  </div>
+
+  <div data-setting="import" class="tool-icon  icon-settings-open-folder-white" title="&lt;span class=&#39;highlight&#39;&gt;IMPORT&lt;/span&gt;&lt;/br&gt;Import an existing image,&lt;br/&gt;an animated GIF or a .piskel file" rel="tooltip" data-placement="left">
+  </div>
+
+</div>
+        <div class="drawer vertical-centerer">
+          <div class="drawer-content" id="drawer-container">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="dialog-container-wrapper" class="animated">
+    <div id="dialog-container">
+    </div>
+  </div>
+
+  <div style="display:none">
+  <script type="text/template" id="progress-bar-template">
+    <div class="progress-bar-container">
+      <div class="progress-bar-name">{{name}}</div>
+      <div class="progress-bar-item progress-bar"></div>
+      <div class="progress-bar-item progress-bar-status">{{status}}%</div>
+    </div>
+  </script>
+
+  <!-- Tooltip container -->
+  <script type="text/template" id="tooltip-container-template">
+    <div class='tooltip-container'>
+      <div>{{helptext}} <span class='tooltip-shortcut'>{{shortcut}}</span></div>
+      {{!descriptors!}}
+    </div>
+  </script>
+
+  <!-- Tooltip description with modifier -->
+  <script type="text/template" id="tooltip-modifier-descriptor-template">
+    <div class='tooltip-descriptor'>
+      <span class='tooltip-descriptor-button'>{{key}}</span>
+      {{description}}
+    </div>
+  </script>
+
+  <!-- Simple tooltip description -->
+  <script type="text/template" id="tooltip-simple-descriptor-template">
+    <div class='tooltip-descriptor'>
+      {{description}}
+    </div>
+  </script>
+</div>
+  <div style="display:none">
+  <script type="text/template" id="data-uri-export-partial">
+    <style>
+      html, body {
+        margin: 0;
+      }
+
+      body {
+        background: #444;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-family: monospace;
+      }
+
+      #image-wrapper {
+        flex-grow: 1;
+        flex-shrink: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      img {
+        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAABlBMVEXf39////8zI3BgAAAAHklEQVR4AWNghAIGCMDgjwgFCDDSw2M0PSCD0fQAACRcAgF4ciGUAAAAAElFTkSuQmCC') repeat;
+      }
+
+      #bottom-wrapper {
+        width: 600px;
+        height: 300px;
+        margin-top: 20px;
+        position: relative;
+        flex-shrink: 0;
+      }
+
+      textarea {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        padding: 10px;
+        border-style: none;
+
+        background: black;
+        color: gold;
+        font-family: monospace;
+      }
+
+      span {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        font-size: 12px;
+        padding: 5px;
+        color: white;
+        background-color: #444;
+      }
+    </style>
+    <body>
+      <div id="image-wrapper">
+        <img src="{{src}}" alt="Exported image as data-uri">
+      </div>
+      <div id="bottom-wrapper">
+        <textarea spellcheck="false" onclick="this.select()">{{src}}</textarea>
+        <span>Data-uri for the exported framesheet</span>
+      </div>
+    </body>
+  </script>
+</div>
+
+  <div style="display:none">
+  <script type="text/template" id="popup-preview-partial">
+    <style>
+      body,
+      .popup-container ,
+      .preview-container,
+      .background-image-frame-container {
+        width : 100%;
+        height : 100%;
+      }
+
+      body {
+        margin: 0;
+      }
+
+      .popup-container {
+        position: absolute;
+        background : #333;
+      }
+
+      .preview-container {
+        position: relative;
+      }
+
+      .background-image-frame-container {
+        position: relative;
+        background-repeat : no-repeat;
+      }
+
+      .canvas-container .canvas-background {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+      }
+
+      .light-picker-background,
+      .light-canvas-background .canvas-background {
+        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAABlBMVEXf39////8zI3BgAAAAHklEQVR4AWNghAIGCMDgjwgFCDDSw2M0PSCD0fQAACRcAgF4ciGUAAAAAElFTkSuQmCC') repeat;
+      }
+
+      .medium-picker-background,
+      .medium-canvas-background .canvas-background {
+        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAABlBMVEW6urr///82MBGFAAAAHUlEQVR4AWOAAUYoQOePEAUj3v9oYDQ9gMBoegAAJFwCAbLaTIMAAAAASUVORK5CYII=') repeat;
+      }
+
+      .lowcont-medium-picker-background,
+      .lowcont-medium-canvas-background .canvas-background {
+        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAABlBMVEXV1dXb29tFGkCIAAAAHklEQVR4AWNghAIGCMDgjwgFCDDSw2M0PSCD0fQAACRcAgF4ciGUAAAAAElFTkSuQmCC ') repeat;
+      }
+
+      .lowcont-dark-picker-background,
+      .lowcont-dark-canvas-background .canvas-background {
+        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAABlBMVEVMTExVVVUnhsEkAAAAHUlEQVR4AWOAAUYoQOePEAUj3v9oYDQ9gMBoegAAJFwCAbLaTIMAAAAASUVORK5CYII=') repeat;
+      }
+    </style>
+    <div class="popup-container  lowcont-dark-canvas-background ">
+      <div class="preview-container  canvas-container">
+        <div class="canvas-background"></div>
+      </div>
+    </div>
+  </script>
+</div>
+
+  <span class="cheatsheet-link icon-common-keyboard-gold" rel="tooltip" data-placement="right" title="Keyboard shortcuts">&nbsp;</span>
+  <div class="performance-link icon-common-warning-red" rel="tooltip" data-placement="left" title="Performance problem detected, learn more.">&nbsp;</div>
+
+  <!-- dialogs partials -->
+  <script type="text/template" id="templates/dialogs/browse-backups.html">
+  <div class="dialog-wrapper">
+    <h3 class="dialog-head">
+      Browse backups
+      <span class="dialog-close">X</span>
+    </h3>
+    <div class="dialog-content backups-wizard-container"></div>
+  </div>
+</script>
+
+<script type="text/template" id="backups-select-session">
+<div class="backups-step-container">
+  <div class="backups-step-content">
+    <div class="browse-backups-disclaimer">
+      <div class="backups-icon icon-common-backup-white">&nbsp;</div>
+      <div class="browse-backups-disclaimer-content">
+        <!-- Keep in sync with MAX_SESSIONS in BackupService.js -->
+        If you forgot to save your work or if Piskel crashed, try to restore one of the automatically backed up sessions below (up to 10 sessions).
+        <br/>
+        <br/>
+        Backups may be erased without notice, so try to save your work to a file or to your gallery as soon as you can.
+      </div>
+    </div>
+    <div class="session-list">
+    </div>
+  </div>
+</div>
+</script>
+
+<script type="text/template" id="session-list-empty">
+<div class="centered-message session-list-empty">No session found ...</div>
+</script>
+
+<script type="text/template" id="session-list-error">
+<div class="centered-message session-list-error">Could not load backup sessions, something went wrong.</div>
+</script>
+
+<script type="text/template" id="session-list-item">
+<div class="session-item">
+  <div class="session-details">
+    <span class="session-details-title">{{name}} {{description}}</span>
+    <span class="session-details-info">Session recorded {{date}}</span>
+    <span class="session-details-info">{{count}} saved</span>
+  </div>
+  <div class="session-actions">
+    <button class="button" data-session-id="{{id}}" data-action="delete">Delete</button>
+    <button class="button button-primary" data-session-id="{{id}}" data-action="view">View</button>
+  </div>
+</div>
+</script>
+
+<script type="text/template" id="backups-session-details">
+<div class="backups-step-container">
+  <div class="backups-step-content">
+    <div class="snapshot-list"></div>
+  </div>
+  <div class="backups-step-actions">
+    <button class="button back-button">back</button>
+  </div>
+</div>
+</script>
+
+<script type="text/template" id="snapshot-list-empty">
+<div class="centered-message snapshot-list-empty">No snapshot found ...</div>
+</script>
+
+<script type="text/template" id="snapshot-list-error">
+<div class="centered-message snapshot-list-error">Could not load snapshots, something went wrong.</div>
+</script>
+
+<script type="text/template" id="snapshot-list-item">
+<div class="snapshot-item" data-snapshot-id={{id}}>
+  <div class="snapshot-preview lowcont-dark-picker-background"></div>
+  <div class="snapshot-details">
+    <span class="snapshot-details-title">{{name}} {{description}}</span>
+    <span class="snapshot-details-info">Snapshot recorded {{date}}</span>
+    <span class="snapshot-details-info">{{frames}}, size {{resolution}}, {{fps}}fps</span>
+  </div>
+  <div class="snapshot-actions">
+    <button class="button button-primary" data-action="load" data-snapshot-id="{{id}}">Load</button>
+  </div>
+</div>
+</script>
+  <script type="text/template" id="templates/dialogs/browse-local.html">
+  <div class="dialog-wrapper">
+    <h3 class="dialog-head">
+      Browse Local Piskels
+      <span class="dialog-close">X</span>
+    </h3>
+    <div class="dialog-content" style="padding:10px 20px; font-size:1.5em; overflow: auto;">
+      <table class="local-piskel-list">
+        <thead>
+          <tr class="local-piskel-list-head">
+            <td class="local-piskel-name">Name</td>
+            <td class="local-piskel-save-date">Date</td>
+            <td colspan=2>Actions</td>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+</script>
+
+<script type="text/template" id="local-storage-item-template">
+  <tr class="local-piskel-item">
+    <td class="local-piskel-name">{{name}}</td>
+    <td class="local-piskel-save-date">{{date}}</td>
+    <td><button type="button" data-action="load" data-name="{{name}}" class="button button-primary local-piskel-load-button">Load</button></td>
+    <td><button type="button" data-action="delete" data-name="{{name}}" class="button local-piskel-delete-button">Delete</button></td>
+  </tr>
+</script>
+  <script type="text/template" id="templates/dialogs/cheatsheet.html">
+  <div id="cheatsheetContainer" class="dialog-wrapper">
+    <h3 class="dialog-head">
+      <span class="dialog-title">Keyboard shortcuts</span>
+      <span class="dialog-close">X</span>
+    </h3>
+    <div class="cheatsheet-container dialog-content">
+      <div class="cheatsheet-section">
+        <h3 class="cheatsheet-title">Tool shortcuts</h3>
+        <ul class="cheatsheet-tool-shortcuts"></ul>
+      </div>
+      <div class="cheatsheet-section">
+        <h3 class="cheatsheet-title">Misc shortcuts</h3>
+        <ul class="cheatsheet-misc-shortcuts"></ul>
+      </div>
+      <div class="cheatsheet-boxes">
+        <div class="cheatsheet-section">
+          <h3 class="cheatsheet-title">Selection shortcuts</h3>
+          <ul class="cheatsheet-selection-shortcuts"></ul>
+        </div>
+        <div class="cheatsheet-section">
+          <h3 class="cheatsheet-title">Color shortcuts</h3>
+          <ul class="cheatsheet-color-shortcuts"></ul>
+        </div>
+        <div class="cheatsheet-section">
+          <h3 class="cheatsheet-title">Storage shortcuts</h3>
+          <ul class="cheatsheet-storage-shortcuts"></ul>
+        </div>
+      </div>
+    </div>
+    <div class="cheatsheet-actions">
+      <span class="cheatsheet-helptext" rel="tooltip" data-placement="top" title="!!!Set in CheatsheetController!!!"><b>Customize shortcuts ?</b></span>
+      <button type="button" name="cheatsheet-restore-defaults" data-action="restore-defaults" class="button cheatsheet-button cheatsheet-restore-defaults">Restore default shortcuts</button>
+    </div>
+
+    <!-- Event trap to capture keyboard remaps -->
+    <div style="position:relative; overflow:hidden; width:1px; height:1px;">
+      <input type="text" id="cheatsheetEventTrap" style="position:absolute; top:-1000px;" />
+    </div>
+  </div>
+</script>
+
+<script type="text/template" id="cheatsheet-shortcut-template">
+  <li class="cheatsheet-shortcut {{className}}" data-shortcut-id="{{id}}">
+    <div class="cheatsheet-icon {{icon}}"></div>
+    <span class="cheatsheet-key" rel="tooltip" data-placement="top" title="{{title}}">{{!key!}}</span>
+    <span class="cheatsheet-description">{{description}}</span>
+  </li>
+</script>
+  <script type="text/template" id="templates/dialogs/create-palette.html">
+  <div class="dialog-wrapper">
+    <h3 class="dialog-head">
+      <span class="dialog-title">Create palette</span>
+      <span class="dialog-close">X</span>
+    </h3>
+    <div class="dialog-create-palette" style="font-size:1.3em">
+        <div class="create-palette-section form-section">
+          <span class="create-palette-name-label">Name</span>
+          <input type="text" class="textfield create-palette-name-input" name="palette-name" placeholder="palette name ..."/>
+          <div class="create-palette-import-section">
+            <button
+              type="button"
+              rel="tooltip" data-placement="right" title="Import palette from an existing Image or from a palette file"
+              class="button  button-primary create-palette-import-button">Import from file</button>
+            <button
+              type="button"
+              rel="tooltip" data-placement="right" title="Download the palette as a GPL file"
+              class="button  button-primary create-palette-download-button">Download as file</button>
+            <input style="display:none"
+              class="create-palette-import-input"
+              type="file" value="file" accept="*"/>
+          </div>
+        </div>
+        <div class="colors-container">
+          <ul class="colors-list"></ul>
+          <div class="color-picker-container">
+            <div class="color-picker-spectrum"></div>
+            <div class="color-picker-input">
+              <input type="text"  data-model="hex" data-dimension="*" class="textfield  uppercase" value="#000000" />
+            </div>
+            <div class="color-picker-slider">
+              <span>H</span>
+              <input type="range" data-model="hsv" data-dimension="h" value="0" min="0" max="359" tabindex="-1"/>
+              <input type="text"  data-model="hsv" data-dimension="h" class="textfield" value="0" />
+            </div>
+            <div class="color-picker-slider">
+              <span>S</span>
+              <input type="range" data-model="hsv" data-dimension="s" value="0" min="0" max="100" tabindex="-1"/>
+              <input type="text"  data-model="hsv" data-dimension="s" class="textfield" value="0" />
+            </div>
+            <div class="color-picker-slider">
+              <span>V</span>
+              <input type="range" data-model="hsv" data-dimension="v" value="0" min="0" max="100" tabindex="-1"/>
+              <input type="text"  data-model="hsv" data-dimension="v" class="textfield" value="0" />
+            </div>
+            <br/>
+            <div class="color-picker-slider">
+              <span>R</span>
+              <input type="range" data-model="rgb" data-dimension="r" value="0" min="0" max="255" tabindex="-1"/>
+              <input type="text"  data-model="rgb" data-dimension="r" class="textfield" value="0" />
+            </div>
+            <div class="color-picker-slider">
+              <span>G</span>
+              <input type="range" data-model="rgb" data-dimension="g" value="0" min="0" max="255" tabindex="-1"/>
+              <input type="text"  data-model="rgb" data-dimension="g" class="textfield" value="0" />
+            </div>
+            <div class="color-picker-slider">
+              <span>B</span>
+              <input type="range" data-model="rgb" data-dimension="b" value="0" min="0" max="255" tabindex="-1"/>
+              <input type="text"  data-model="rgb" data-dimension="b" class="textfield" value="0" />
+            </div>
+            <div class="color-preview"></div>
+          </div>
+        </div>
+        <div class="create-palette-actions">
+          <button type="button" name="create-palette-cancel" data-action="cancel" class="button create-palette-cancel">Cancel</button>
+          <button type="button" name="create-palette-delete" data-action="delete" class="button button-primary create-palette-delete">Delete</button>
+          <!-- <button type="button" name="create-palette-clone" class="button button-primary create-palette-clone">Save as new</button> -->
+          <button type="button" name="create-palette-submit" data-action="submit" class="button button-primary create-palette-submit">Save</button>
+        </div>
+    </div>
+  </div>
+</script>
+
+<script type="text/template" id="create-palette-color-template">
+  <li
+    class="create-palette-color {{:selected}} {{:light-color}}"
+    style="background:{{color}}"
+    data-palette-index="{{index}}"
+    data-palette-color="{{color}}">
+    <div class="create-palette-remove-color">X</div>
+  </li>
+</script>
+  <script type="text/template" id="templates/dialogs/import.html">
+  <div class="dialog-wrapper">
+    <h3 class="dialog-head">
+      Import and Merge
+      <span class="dialog-close">X</span>
+    </h3>
+    <div class="dialog-content import-wizard-container"></div>
+  </div>
+</script>
+
+<script type="text/template" id="import-image-import">
+<div class="import-step-container import-image-container">
+  <form action="" method="POST" name="import-image-form">
+    <div class="import-section">
+      <span class="dialog-section-title">Name :</span><span class="import-image-file-name"></span>
+    </div>
+    <div class="import-section">
+      <div class="import-section-preview"></div>
+    </div>
+    <div class="import-section">
+      <label class="dialog-section-radio-label">
+        <input class="dialog-section-radio" name="import-type" value="single" type="radio" checked="checked">
+        Import as single image
+      </label>
+    </div>
+    <div class="import-section import-subsection">
+      <span class="dialog-section-title">Resize to</span>
+      <input type="text" class="textfield import-size-field" autocomplete="off" name="resize-width"/>x
+      <input type="text" class="textfield import-size-field" autocomplete="off" name="resize-height"/>
+    </div>
+    <div class="import-section import-subsection">
+      <span class="import-section-title">Smooth resize</span>
+      <input type="checkbox" class="checkbox-fix" checked="checked" name="smooth-resize-checkbox" value="1"/>
+    </div>
+    <div class="import-section">
+      <label class="dialog-section-radio-label">
+        <input class="dialog-section-radio" name="import-type" value="sheet" type="radio">
+        Import as spritesheet
+      </label>
+    </div>
+    <div class="import-section import-subsection">
+      <span class="dialog-section-title">Frame size</span>
+      <input type="text" class="textfield import-size-field" autocomplete="off" name="frame-size-x"/>x
+      <input type="text" class="textfield import-size-field" autocomplete="off" name="frame-size-y"/>
+    </div>
+    <div class="import-section import-subsection">
+      <span class="dialog-section-title">Offset</span>
+      <input type="text" class="textfield import-size-field" autocomplete="off" name="frame-offset-x"/>x
+      <input type="text" class="textfield import-size-field" autocomplete="off" name="frame-offset-y"/>
+    </div>
+  </form>
+  <div class="import-step-buttons">
+    <button class="import-back-button button">back</button>
+    <button class="import-next-button button button-primary">next</button>
+  </div>
+</div>
+</script>
+
+<script type="text/template" id="import-select-mode">
+<div class="import-step-container">
+  <div class="import-info">
+    <div class="import-preview"></div>
+    <div class="import-meta"></div>
+  </div>
+
+  <div class="import-step-content">
+    <div class="import-mode">
+      <div class="import-mode-title">How do you want to import the new content?</div>
+      <div class="import-mode-section">
+        <span class="import-mode-section-description">Combine with your sprite</span>
+        <button class="import-mode-merge-button button-primary button">Combine</button>
+      </div>
+      <div class="import-mode-section">
+        <span class="import-mode-section-description">Replace your sprite</span>
+        <button class="import-mode-replace-button button-primary button">Replace</button>
+      </div>
+    </div>
+
+    <div class="import-step-buttons">
+      <button class="import-back-button button">back</button>
+      <button style="display: none" class="import-next-button button button-primary">next</button>
+    </div>
+  </div>
+</div>
+</script>
+
+<script type="text/template" id="import-meta-content">
+  <div class="import-name">
+    <span class="import-meta-label">Name</span>
+    <span class="import-meta-value" title="{{name}}">{{name}}</span>
+  </div>
+  <div class="import-dimensions">
+    <span class="import-meta-label">Dimensions</span>
+    <span class="import-meta-value">{{dimensions}}</span>
+  </div>
+  <div class="import-frames">
+    <span class="import-meta-label">Frames</span>
+    <span class="import-meta-value">{{frames}}</span>
+  </div>
+  <div class="import-layers">
+    <span class="import-meta-label">Layers</span>
+    <span class="import-meta-value">{{layers}}</span>
+  </div>
+</script>
+
+<script type="text/template" id="import-adjust-size">
+<div class="import-step-container">
+
+  <div class="import-info">
+    <div class="import-preview"></div>
+    <div class="import-meta"></div>
+  </div>
+
+  <div class="import-step-content">
+    <div class="import-resize-info"></div>
+    <div class="import-resize-anchor import-resize-section">
+      <div class="import-resize-anchor-info"></div>
+      <div class="import-resize-anchor-container"></div>
+    </div>
+    <div class="import-step-buttons">
+      <button class="import-back-button button">back</button>
+      <button class="import-next-button button button-primary">next</button>
+    </div>
+  </div>
+</div>
+</script>
+
+<script type="text/template" id="import-resize-bigger-partial">
+<div class="import-resize-bigger">
+  <div class="import-resize-section">
+    The imported image is bigger than the current sprite.
+  </div>
+  <div class="import-resize-section">
+    <label class="import-resize-option">
+      <input type="radio" name="resize-mode" id="resize-option-expand" value="expand" {{expandChecked}}/>
+      <span>Expand canvas to {{newSize}}</span>
+    </label>
+    <label class="import-resize-option">
+      <input type="radio" name="resize-mode" id="resize-option-keep" value="keep" {{keepChecked}}/>
+      <span>Keep canvas size at {{size}}</span>
+    </label>
+  </div>
+</div>
+</script>
+
+<script type="text/template" id="import-resize-smaller-partial">
+<div class="import-resize-smaller">
+  <div class="import-resize-section">
+    The image being imported is smaller ({{newSize}}) than the canvas size ({{size}}).
+  </div>
+</div>
+</script>
+
+<script type="text/template" id="import-insert-location">
+<div class="import-step-container">
+  <div class="import-info">
+    <div class="import-preview"></div>
+    <div class="import-meta"></div>
+  </div>
+
+  <div class="import-step-content">
+    <div>Select the insertion frame:</div>
+    <div class="insert-frame-preview"></div>
+    <div class="insert-mode-container">
+      <div class="insert-mode-option-label">
+        Insert imported frames:
+      </div>
+      <label class="insert-mode-option">
+        <input type="radio" name="insert-mode" id="insert-mode-add" value="add" checked="checked"/>
+        <span>as new frames</span>
+      </label>
+      <label class="insert-mode-option">
+        <input type="radio" name="insert-mode" id="insert-mode-insert" value="insert"/>
+        <span>in existing frames</span>
+      </label>
+    </div>
+    <div class="import-step-buttons">
+      <button class="import-back-button button">back</button>
+      <button class="import-next-button button button-primary">import</button>
+    </div>
+  </div>
+</div>
+</script>
+
+  <script type="text/template" id="templates/dialogs/performance-info.html">
+  <div class="dialog-wrapper">
+    <h3 class="dialog-head">
+      Performance issues
+      <span class="dialog-close">X</span>
+    </h3>
+    <div class="dialog-performance-info-body">
+      <p>The current sprite may exceed the recommendations for Piskel.</p>
+      <p>You can ignore this warning and continue working with your sprite but you might experience the following issues:</p>
+      <ul>
+        <li>saving failures</li>
+        <li>slowdowns</li>
+        <li>crashes</li>
+      </ul>
+      <p>If you ignore this warning, please save often!</p>
+      <p>To fix the issue, try adjusting your sprite settings:</p>
+       <ul>
+        <li>sprite resolution <sup title="recommended: lower than 512x512" rel="tooltip" data-placement="top">?</sup></li>
+        <li>number of layers <sup title="recommended: less than 10" rel="tooltip" data-placement="top">?</sup></li>
+        <li>number of frames <sup title="recommended: less than 50" rel="tooltip" data-placement="top">?</sup></li>
+        <li>number of colors <sup title="recommended: less than 256" rel="tooltip" data-placement="top">?</sup></li>
+      </ul>
+      <p>We strive to improve Piskel, its performance and stability, but this is a personal project with limited time and resources.
+         We prefer to warn you early rather than having you lose your work.</p>
+      <p>Feedback welcome at <a href="https://github.com/piskelapp/piskel" target="_blank">https://github.com/piskelapp/piskel</a></p>
+      <p>
+        <div class="warning-icon icon-common-warning-red">&nbsp;</div>
+        <div class="warning-icon-info">This icon will remain on the bottom-right of the application until the performance issue is fixed. You can click on it at anytime to display this information again.</div>
+      </p>
+    </div>
+  </div>
+</script>
+  <script type="text/template" id="templates/dialogs/unsupported-browser.html">
+  <div class="dialog-wrapper">
+    <h3 class="dialog-head">
+      Browser not supported
+      <span class="dialog-close">X</span>
+    </h3>
+    <div class="dialog-content">
+      <p>Your current browser (<span id="current-user-agent"></span>) is not supported.</p>
+      <p>Piskel is currently tested for:</p>
+      <ul class="supported-browser-list">
+        <li>Google Chrome <a href="https://www.google.com/chrome/browser/desktop/" target="_blank">https://www.google.com/chrome/browser/desktop/</a></li>
+        <li>Mozilla Firefox <a href="https://www.mozilla.org/en-US/firefox/" target="_blank">https://www.mozilla.org/en-US/firefox/</a></li>
+        <li>Microsoft Edge <a href="https://www.microsoft.com/en-us/windows/microsoft-edge" target="_blank">https://www.microsoft.com/en-us/windows/microsoft-edge</a></li>
+      </ul>
+      <p>This browser has not been tested with Piskel, you might experience unknown bugs and crashes if you decide to continue.</p>
+    </div>
+  </div>
+</script>
+
+  <!-- settings-panel partials -->
+  <script type="text/html" id="templates/settings/preferences.html">
+  <div class="settings-section settings-section-preferences">
+    <div class="settings-title">Settings</div>
+    <div class="tab-list">
+      <div class="tab-item" data-tab-id="misc">Misc</div>
+      <div class="tab-item" data-tab-id="grid">Grid</div>
+      <div class="tab-item" data-tab-id="tile">Tile mode</div>
+    </div>
+    <div class="tab-content"></div>
+    <div class="settings-version-info">
+      Piskel
+      <span rel="tooltip" data-placement="bottom" title="View release notes">
+        <a  class="settings-version" target="_blank"
+            href="https://github.com/piskelapp/piskel/releases/tag/v0.13.0-cdo.6">v0.13.0-cdo.6</a>
+      </span>
+    </div>
+  </div>
+
+</script>
+
+  <script type="text/html" id="templates/settings/preferences/grid.html">
+  <div class="preferences-panel-grid">
+    <div class="settings-item">
+      <label>
+        Enable grid
+        <input type="checkbox" value="1" class="enable-grid-checkbox" name="enable-grid-checkbox"/>
+      </label>
+    </div>
+    <div class="settings-item settings-item-grid-size">
+      <label>Grid size</label>
+      <div class="grid-size-container size-picker-container">
+        <div class="size-picker-option"
+          title="1px" rel="tooltip" data-placement="top" data-size="1"></div>
+        <div class="size-picker-option"
+          title="2px" rel="tooltip" data-placement="top" data-size="2"></div>
+        <div class="size-picker-option"
+          title="3px" rel="tooltip" data-placement="top" data-size="3"></div>
+        <div class="size-picker-option"
+          title="4px" rel="tooltip" data-placement="top" data-size="4"></div>
+      </div>
+    </div>
+    <div class="settings-item settings-item-grid-color">
+      <label>Grid color</label>
+      <div class="grid-colors-list"></div>
+      <script type="text/template" id="color-list-item-template">
+        <div class="grid-colors-item {{:selected}}"
+             data-color="{{color}}"
+             style="background:{{background}}"
+             title="{{title}}">
+        </div>
+      </script>
+    
+  
+
+  <script type="text/html" id="templates/settings/preferences/misc.html">
+  <div class="preferences-panel-misc">
+    <div class="settings-item">
+      <label>Background</label>
+      <div class="background-picker-wrapper">
+        <div class="background-picker light-picker-background" data-background="light-canvas-background"
+              rel="tooltip" data-placement="bottom" title="light / high contrast">
+        </div>
+        <div class="background-picker medium-picker-background" data-background="medium-canvas-background"
+              rel="tooltip" data-placement="bottom" title="medium / high contrast">
+        </div>
+        <div class="background-picker lowcont-medium-picker-background" data-background="lowcont-medium-canvas-background"
+              rel="tooltip" data-placement="bottom" title="medium / low contrast">
+        </div>
+        <div class="background-picker lowcont-dark-picker-background" data-background="lowcont-dark-canvas-background"
+              rel="tooltip" data-placement="bottom" title="dark / low contrast">
+        </div>
+      </div>
+    </div>
+
+    <div class="settings-item">
+      <label>Layer opacity</label>
+      <input type="range" class="settings-opacity-input layer-opacity-input" name="layer-opacity" min="0"  max="1" step="0.05"/>
+      <span class="settings-opacity-text layer-opacity-text"></span>
+    </div>
+
+    <div class="settings-item">
+      <label>Maximum FPS</label>
+      <input type="text" class="textfield  textfield-small  max-fps-input" autocomplete="off" name="max-fps"/>
+    </div>
+
+    <div class="settings-item">
+      <label for="color-format">Color format</label>
+      <select id="color-format" class="color-format-select">
+        <option value="hex">Hex</option>
+        <option value="rgb">RGB</option>
+      </select>
+    </div>
+  </div>
+</script>
+  <script type="text/html" id="templates/settings/preferences/tile.html">
+  <div class="preferences-panel-tile">
+    <div class="settings-item">
+      <label>
+        Enable tile mode
+        <input type="checkbox" value="1" class="tile-mode-checkbox" name="tile-mode-checkbox"/>
+      </label>
+    </div>
+
+    <div class="settings-item">
+      <label>Mask opacity</label>
+      <input type="range" min="0" max="0.5" step="0.01"
+        class="settings-opacity-input tile-mask-opacity-input" name="tile-mask-opacity"/>
+      <span class="settings-opacity-text tile-mask-opacity-text"></span>
+    </div>
+  </div>
+</script>
+  <script type="text/html" id="templates/settings/resize.html">
+  <div class="settings-section settings-section-resize">
+    <!-- RESIZE DRAWING SECTION -->
+    <div class="settings-title">
+      Resize
+    </div>
+    <div class="settings-item  resize-canvas">
+      <form action="" method="POST" name="resize-canvas-form">
+        <div class="resize-section">
+          <span  class="resize-section-title">Width</span>
+          <input type="text" class="textfield resize-size-field" autocomplete="off" name="resize-width"/>
+          <span>px</span>
+        </div>
+        <div class="resize-section">
+          <span  class="resize-section-title">Height</span>
+          <input type="text" class="textfield resize-size-field" autocomplete="off" name="resize-height"/>
+          <span>px</span>
+        </div>
+        <div class="resize-section">
+          <label class="checkbox-container">
+            <input type="checkbox" class="resize-ratio-checkbox checkbox-fix" value="true"/>
+            <span>Maintain aspect ratio</span>
+          </label>
+        </div>
+        <div class="resize-section">
+          <label class="checkbox-container">
+            <input type="checkbox" class="resize-content-checkbox checkbox-fix" value="true"/>
+            <span>Resize canvas content</span>
+          </label>
+        </div>
+        <div class="resize-section">
+          <span  class="resize-section-title">Anchor</span>
+          <div class="resize-anchor-container"></div>
+        </div>
+        <input type="submit" class="button button-primary resize-button" value="Resize" />
+      </form>
+    </div>
+    <!-- DEFAULT SIZE SECTION -->
+    <div class="settings-title">
+      Default size
+    </div>
+    <div class="settings-item  settings-default-size">
+      <form action="" method="POST" name="default-size-form">
+        <div class="resize-section">
+          <span  class="resize-section-title">Width</span>
+          <input type="text" class="textfield resize-size-field" autocomplete="off" name="default-width"/>
+          <span>px</span>
+        </div>
+        <div class="resize-section">
+          <span  class="resize-section-title">Height</span>
+          <input type="text" class="textfield resize-size-field" autocomplete="off" name="default-height"/>
+          <span>px</span>
+        </div>
+        <input type="submit" class="button button-primary default-size-button" value="Set default" />
+      </form>
+    </div>
+  </div>
+</script>
+
+  <script type="text/template" id="templates/settings/save.html">
+  <div class="settings-section settings-section-save">
+    <form action="" method="POST" class="save-form" name="save-form">
+      <div class="settings-title">Sprite Information</div>
+      <div class="settings-item">
+        <div class="settings-form-section" style="overflow:hidden">
+          <label class="row" style="line-height:20px;">Title : </label>
+          <input id="save-name" type="text" class="save-field textfield" autocomplete="off" />
+        </div>
+        <div class="settings-form-section">
+          <label class="row" style="line-height:20px;">Description : </label>
+          <textarea id="save-description" class="save-field textfield"></textarea>
+        </div>
+        <div class="settings-form-section  save-public-section">
+          <label class="row">
+            Public : <input type="checkbox" value="1" name="save-public-checkbox"/>
+          </label>
+        </div>
+      </div>
+    </form>
+  </div>
+</script>
+
+<!-- save-gallery-partial -->
+<script type="text/template" id="save-gallery-partial">
+  <div class="settings-title">Save online</div>
+  <div class="settings-item">
+    <input type="button" class="button button-primary" id="save-gallery-button" value="Save to your gallery" />
+    <div class="save-status save-online-status">Your piskel will be stored online in your gallery.</div>
+  </div>
+</script>
+
+<script type="text/template" id="save-gallery-warning-partial">
+  <div class="save-status-warning-icon icon-common-warning-red">&nbsp;</div>
+  <div class="save-status-warning-text">Saving to the gallery might fail due to the sprite size.</div>
+</script>
+
+<!-- save-gallery-unavailable-partial -->
+<script type="text/template" id="save-gallery-unavailable-partial">
+  <div class="settings-title">Save online</div>
+  <div class="settings-item">
+    <div class="save-status">Login to <a href="https://www.piskelapp.com" target="_blank">piskelapp.com</a> to save and share your sprites online.</div>
+  </div>
+</script>
+
+<!-- save-localstorage-partial -->
+<script type="text/template" id="save-localstorage-partial">
+  <div class="settings-title">Save offline in Browser</div>
+  <div class="settings-item">
+    <input type="button" class="button button-primary" id="save-localstorage-button" value="Save in Browser" />
+    <div class="save-status">Your piskel will be saved locally and will only be accessible from this browser.</div>
+  </div>
+</script>
+
+<!-- save-desktop-partial -->
+<script type="text/template" id="save-desktop-partial">
+  <div class="settings-title">Save as File</div>
+  <div class="settings-item">
+    <input type="button" class="button button-primary" id="save-desktop-button" value="Save" />
+    <input type="button" class="button button-primary" id="save-desktop-as-new-button" value="Save as ..." />
+    <div class="save-status">Your sprite will be saved as a .piskel file.</div>
+  </div>
+</script>
+
+<!-- save-file-download-partial -->
+<script type="text/template" id="save-file-download-partial">
+  <div class="settings-title">Save offline as File</div>
+  <div class="settings-item">
+    <input type="button" class="button button-primary" id="save-file-download-button" value="Save as .piskel" />
+    <div class="save-status">Your sprite will be downloaded as a .piskel file.</div>
+  </div>
+</script>
+  <script type="text/template" id="templates/settings/import.html">
+  <div class="settings-section settings-section-import">
+    <div class="settings-title">
+      Load from Browser
+    </div>
+    <div class="settings-item">
+      <span>Load a <span class="import-highlight">local piskel</span> saved in this Browser</span>
+      <div class="import-section">
+        <button type="button" class="button  button-primary browse-local-button">Browse local saves</button>
+      </div>
+    </div>
+    <div class="settings-title">
+      Load .piskel file
+    </div>
+    <div class="settings-item">
+      <span>Load a <span class="import-highlight">.piskel</span> file from your computer</span>
+
+      <div class="import-section">
+        <button type="button" class="button  button-primary open-piskel-button">Browse .piskel files</button>
+        <span class="file-input-open-piskel-status"></span>
+        <input style="display:none"
+          type="file" name="open-piskel-input"
+          value="file" accept=".piskel"/>
+      </div>
+    </div>
+    <div class="settings-title">
+      Import From Picture
+    </div>
+    <div class="settings-item">
+      <div style="margin-top:5px;margin-bottom:5px;">Supports <span class="import-highlight">PNG, JPG, BMP, Animated GIF</span></div>
+      <div class="import-section">
+        <button type="button" class="button  button-primary file-input-button">Browse images</button>
+        <input style="display:none"
+          type="file" name="file-upload-input"
+          value="file" accept="image/*"/>
+      </div>
+    </div>
+    <div class="settings-title">
+      Recover recent sessions
+    </div>
+    <div class="settings-item">
+      Browse backups of previous sessions.
+      <div style="margin-top:10px;">
+        <button type="button" class="button button-primary browse-backups-button">Browse backups</button>
+      </div>
+    </div>
+  </div>
+</script>
+  <script type="text/html" id="templates/settings/export.html">
+  <div class="settings-section settings-section-export">
+    <div class="settings-title">Export</div>
+    <div class="settings-item export-scale" title="Scale the animation for export"
+        rel="tooltip"
+        data-placement="top">
+      <label for="scale-input">Scale</label>
+      <input type="range" class="scale-input" name="scale-input" min="1"  max="32" step="1"/>
+      <span class="scale-text"></span>
+    </div>
+    <div class="settings-item export-resize">
+      <span class="resize-label">Resolution</span>
+      <input type="text" class="textfield  resize-field  resize-width" autocomplete="off" name="resize-width"/>
+      <div class="resize-label">x</div>
+      <input type="text" class="textfield  resize-field  resize-height" autocomplete="off" name="resize-height"/>
+    </div>
+    <div class="export-tabs tab-list">
+      <div class="export-tab tab-item" data-tab-id="gif">GIF</div>
+      <div class="export-tab tab-item" data-tab-id="png">PNG</div>
+      <div class="export-tab tab-item" data-tab-id="zip">Zip</div>
+      <div class="export-tab tab-item" data-tab-id="misc">Others</div>
+    </div>
+    <div class="export-panel tab-content"></div>
+  </div>
+</script>
+
+  <script type="text/html" id="templates/settings/export/png.html">
+  <div class="export-panel-png">
+    <div class="export-panel-header export-info">Export your animation as a PNG spritesheet containing all frames.</div>
+    <div class="export-panel-section  png-export-layout-section">
+      <div class="highlight" style="padding-bottom: 5px;">Spritesheet layout options:</div>
+      <div style="display: flex; line-height: 20px;">
+        <div style="flex: 1;">
+          <span>Columns</span>
+          <input type="number" min="1" class="textfield" id="png-export-columns" name="png-export-columns">
+        </div>
+        <div style="flex: 1;">
+          <span>Rows</span>
+          <input readonly="true" class="textfield" id="png-export-rows" name="png-export-rows">
+        </div>
+      </div>
+    </div>
+    <div class="export-panel-section export-panel-row">
+      <button type="button" class="button button-primary png-download-button">Download</button>
+      <span class="png-export-dimension-info export-info"></span>
+    </div>
+    <div class="export-panel-section export-panel-row png-export-datauri-section">
+      <button type="button" style="white-space: nowrap;" class="button button-primary datauri-open-button">To data-uri</button>
+      <span class="png-export-datauri-info export-info">Open the PNG export in your browser as a data-uri</span>
+    </div>
+
+    <div class="export-panel-section">
+      <div style="padding-bottom: 5px">
+        <span class="highlight export-panel-row">Export for PixiJS Movie: </span>
+      </div>
+      <div class="export-panel-row">
+        <button type="button" class="button button-primary png-pixi-download-button"/>Download</button>
+        <span class="png-export-dimension-info export-info">Spritesheet with JSON metadata</span>
+      </div>
+
+    </div>
+
+  </div>
+</script>
+
+  <script type="text/html" id="templates/settings/export/gif.html">
+  <div class="export-panel-gif">
+    <div class="export-panel-header export-info">
+      Convert your sprite to an animated GIF.
+    </div>
+    <div class="gif-export-warning">
+      <div class="gif-export-warning-icon icon-common-warning-red">&nbsp;</div>
+      <div class="gif-export-warning-message">
+        Too many colors: can not preserve original colors or transparency.
+      </div>
+    </div>
+    <div class="export-panel-section export-panel-row">
+      <input id="gif-repeat-checkbox" class="gif-repeat-checkbox checkbox-fix" type="checkbox" />
+      <label for="gif-repeat-checkbox"
+             title="Uncheck to play the animation only one time."
+             rel="tooltip"
+             data-placement="top">Loop repeatedly</label>
+    </div>
+    <div class="export-panel-section export-panel-row">
+      <button type="button" class="button button-primary gif-download-button">Download</button>
+      <div class="export-info">Download as an animated GIF.</div>
+    </div>
+    <!-- GAMELAB : Adding classname to be able to hide this feature-->
+    <div class="export-panel-section export-panel-row upload-gif-gamelab">
+      <button type="button" class="button button-primary gif-upload-button">Upload</button>
+      <div class="export-info">Upload as an animated GIF to a public URL.</div>
+    </div>
+    <div class="gif-upload">
+      <div class="gif-export-preview"></div>
+      <div class="gif-upload-status"></div>
+    </div>
+  </div>
+</script>
+  <script type="text/html" id="templates/settings/export/zip.html">
+  <div class="export-panel-zip">
+    <div class="export-panel-header export-info">ZIP archive containing one PNG for each frame. File names will start with the prefix below.</div>
+    <div class="export-panel-section">
+      <div style="display: flex; line-height: 23px;">
+        <label style="flex-shrink: 0; padding-right:5px;">Prefix</label>
+        <input type="text" style="flex: 1;" class="zip-prefix-name textfield"
+               autocomplete="off" placeholder="PNG file prefix ...">
+      </div>
+      <div class="checkbox-container" style="margin: 5px 0;">
+        <input id="zip-split-layers" class="zip-split-layers-checkbox checkbox-fix" type="checkbox" />
+        <label for="zip-split-layers">Split by layers</label>
+      </div>
+      <button type="button" class="button button-primary zip-generate-button"/>Download ZIP</button>
+    </div>
+  </div>
+</script>
+  <script type="text/html" id="templates/settings/export/misc.html">
+  <div class="export-panel-misc">
+    <div class="export-panel-header export-info">
+      Less usual export formats. Feedback and improvements welcome.
+    </div>
+    <div class="export-panel-section">
+      <div style="padding-bottom: 5px">
+        <span class="highlight">Export as C File: </span>
+        <span class="export-info">
+          C file with frame rendered as array.
+        </span>
+      </div>
+      <button type="button" class="button button-primary c-download-button">Download C file</button>
+    </div>
+    <div class="export-panel-section">
+      <div style="padding-bottom: 5px">
+        <span class="highlight">Export selected frame as PNG File: </span>
+        <span class="export-info">
+          PNG export of the currently selected frame.
+        </span>
+      </div>
+      <button type="button" class="button button-primary selected-frame-download-button">Download</button>
+    </div>
+  </div>
+</script>
+
+  <script type="text/javascript">
+    (function () {
+
+  /**
+   * See @Gruntfile.js => after build, -2019-04-25-03-58 is replaced by the build version
+   */
+  var version = '-2019-04-25-03-58';
+  var versionHasNotBeenReplaced = version.indexOf('@@') === 0;
+  if (versionHasNotBeenReplaced)  {
+    version = '';
+  }
+
+  if (!window.piskelReadyCallbacks) {
+    window.piskelReadyCallbacks = [];
+  }
+
+  window._onPiskelReady = function () {
+    var loadingMask = document.getElementById('loading-mask');
+    loadingMask.style.opacity = 0;
+    window.setTimeout(function () {loadingMask.parentNode.removeChild(loadingMask);}, 600);
+    pskl.app.init();
+    pskl._releaseVersion = '0.13.0-cdo.6';
+    // cleanup
+    delete window.pskl_exports;
+    delete window.loadDebugScripts;
+    delete window.done;
+
+    // Run Piskel ready callbacks
+    for (var i = 0; i < window.piskelReadyCallbacks.length; i++) {
+      window.piskelReadyCallbacks[i]();
+    }
+  };
+
+  var prefixPath = function (path) {
+    if (window.pskl && window.pskl.appEngineToken_) {
+      return '../' + path;
+    } else {
+      return path;
+    }
+  };
+
+  var loadScript = function (src, callback) {
+    src = prefixPath(src);
+    var script = window.document.createElement('script');
+    script.setAttribute('src',src);
+    script.setAttribute('onload',callback);
+    window.document.body.appendChild(script);
+  };
+
+  var loadStyle = function (src) {
+    src = prefixPath(src);
+    var link = document.createElement('link');
+    link.setAttribute('href', src);
+    link.setAttribute('rel', 'stylesheet');
+    link.setAttribute('type', 'text/css');
+    document.head.appendChild(link);
+  };
+
+  if (window.location.href.indexOf('debug') != -1) {
+    window.pskl_exports = {};
+    var scriptIndex = 0;
+    window.loadNextScript = function () {
+      if (scriptIndex == window.pskl_exports.scripts.length) {
+        window._onPiskelReady();
+      } else {
+        loadScript(window.pskl_exports.scripts[scriptIndex], 'loadNextScript()');
+        scriptIndex ++;
+      }
+    };
+    loadScript('piskel-script-list.js', 'loadNextScript()');
+
+    var styles;
+    window.loadStyles = function () {
+      styles = window.pskl_exports.styles;
+      for (var i = 0 ; i < styles.length ; i++) {
+        loadStyle(styles[i]);
+      }
+    };
+
+    window.reloadStyles = function () {
+      for (var i = 0 ; i < styles.length ; i++) {
+        document.querySelector('link[href="' + styles[i] + '"]').remove();
+        loadStyle(styles[i]);
+      }
+    };
+
+    loadScript('piskel-style-list.js', 'loadStyles()');
+  } else {
+    var script;
+    if (window.location.href.indexOf('pack') != -1) {
+      script = 'js/piskel-packaged' + version + '.js';
+    } else {
+      script = 'js/piskel-packaged-min' + version + '.js';
+    }
+
+    loadStyle('css/piskel-style-packaged' + version + '.css');
+    loadScript(script, '_onPiskelReady()');
+  }
+})();
+  </script><script src="./piskel-packaged-min-2019-04-25-03-58.js.download" onload="_onPiskelReady()"></script>
+  <!--body-main-end-->
+  <!-- the comment above indicates the end of the markup reused by the editor integrated in piskelapp.com -->
+  <!-- do not delete, do not move :) -->
+
+
+
+<div class="sp-container sp-hidden sp-light sp-buttons-disabled sp-initial-disabled" data-x-position="left" data-y-position="bottom" style="position: absolute; top: 0px; left: 0px;"><div class="sp-palette-container"><div class="sp-palette sp-thumb sp-cf"><div class="sp-cf sp-palette-row sp-palette-row-0"><span title="rgba(0, 0, 0, 0)" data-color="rgba(0, 0, 0, 0)" class="sp-thumb-el sp-thumb-dark"><span class="sp-thumb-inner" style="background-color:rgba(0, 0, 0, 0);"></span></span></div><div class="sp-cf sp-palette-row sp-palette-row-selection"></div></div></div><div class="sp-picker-container"><div class="sp-top sp-cf"><div class="sp-fill"></div><div class="sp-top-inner"><div class="sp-color" style="background-color: rgb(255, 0, 0);"><div class="sp-sat"><div class="sp-val"><div class="sp-dragger" style="top: -2px; left: -2px;"></div></div></div></div><div class="sp-hue"><div class="sp-slider" style="top: -2px;"></div></div></div><div class="sp-alpha"><div class="sp-alpha-inner"><div class="sp-alpha-handle" style="left: 0px;"></div></div></div></div><div class="sp-input-container sp-cf"><input class="sp-input" type="text" spellcheck="false"></div><div class="sp-initial sp-thumb sp-cf"></div><div class="sp-button-container sp-cf"><a class="sp-cancel" href="https://studio.code.org/blockly/js/piskel/index.html#">cancel</a><button class="sp-choose">choose</button></div></div></div><div class="sp-container sp-hidden sp-light sp-buttons-disabled sp-initial-disabled" data-x-position="left" data-y-position="bottom" style="position: absolute; top: 0px; left: 0px;"><div class="sp-palette-container"><div class="sp-palette sp-thumb sp-cf"><div class="sp-cf sp-palette-row sp-palette-row-0"><span title="rgba(0, 0, 0, 0)" data-color="rgba(0, 0, 0, 0)" class="sp-thumb-el sp-thumb-dark sp-thumb-active"><span class="sp-thumb-inner" style="background-color:rgba(0, 0, 0, 0);"></span></span></div><div class="sp-cf sp-palette-row sp-palette-row-selection"></div></div></div><div class="sp-picker-container"><div class="sp-top sp-cf"><div class="sp-fill"></div><div class="sp-top-inner"><div class="sp-color" style="background-color: rgb(255, 0, 0);"><div class="sp-sat"><div class="sp-val"><div class="sp-dragger" style="top: -2px; left: -2px;"></div></div></div></div><div class="sp-hue"><div class="sp-slider" style="top: -2px;"></div></div></div><div class="sp-alpha"><div class="sp-alpha-inner"><div class="sp-alpha-handle" style="left: 0px;"></div></div></div></div><div class="sp-input-container sp-cf"><input class="sp-input" type="text" spellcheck="false"></div><div class="sp-initial sp-thumb sp-cf"></div><div class="sp-button-container sp-cf"><a class="sp-cancel" href="https://studio.code.org/blockly/js/piskel/index.html#">cancel</a><button class="sp-choose">choose</button></div></div></div><div class="tooltip fade right in" style="top: 301.3px; left: 61px; display: block;"><div class="tooltip-arrow"></div><div class="tooltip-inner">
+    <div class="tooltip-container">
+      <div>Rectangle selection <span class="tooltip-shortcut">(S)</span></div>
+      
+    <div class="tooltip-descriptor">
+      Drag the selection to move it. You may switch to other frames.
+    </div>
+  
+    <div class="tooltip-descriptor">
+      <span class="tooltip-descriptor-button">CTRL+C</span>
+      Duplicate the selected area
+    </div>
+  
+    <div class="tooltip-descriptor">
+      <span class="tooltip-descriptor-button">SHIFT</span>
+      Hold to move the content
+    </div>
+  
+    </div>
+  </div></div></body></html>
